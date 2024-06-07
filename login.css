@@ -44,32 +44,19 @@ body{
     border-radius: 10px;
 }
 .contenedor__input{
-    width: 100%;
     background: none;
-    font-size: 20px;
     padding: 10px;
     border: none;
-    outline: none;
     font-family:'Roboto', sans-serif; 
+    height: 4vh;
+    font-size: 10px;
 }
 
-/* .contenedor__label{
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 5px;
-    transform: translateY(10px);
-    transition: transform .5s, color .3s;
-} */
 .contenedor__submit{
     display: flex;
     justify-content: center;
     background: var(--color-boton) ;
     color: #fff;
-    /* font-family:'Roboto', sans-serif; 
-    font-size: 15px;
-    border: none;
-    border-radius: 7px; */
     border: none;
     border-radius: 10px;
     width: 100px;
