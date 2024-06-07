@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Varela+Round&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --color-primario: #C2E5F5;
+    --color-secundario: #FFFFFF;
+    --color-boton: #4FB7E1;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+    display: flex;
+    min-height: 100vh;
+}
+.formulario{
+    margin: auto;
+    width: 100vh;
+    max-width: 450px;
+    padding: 4.5em 3em;
+    border-radius: 10px;
+    box-shadow: 10px;
+    background-color: var(--color-primario);
+}
+.formulario__titulo{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor{
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.contenedor__grupo{
+    position: relative;
+    background-color: var(--color-secundario);
+    border-radius: 10px;
+}
+.contenedor__input{
+    width: 100%;
+    background: none;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-family:'Roboto', sans-serif; 
+}
+
+/* .contenedor__label{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+} */
+.contenedor__submit{
+    display: flex;
+    justify-content: center;
+    background: var(--color-boton) ;
+    color: #fff;
+    /* font-family:'Roboto', sans-serif; 
+    font-size: 15px;
+    border: none;
+    border-radius: 7px; */
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+
+}
