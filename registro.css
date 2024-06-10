@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Varela+Round&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+:root{
+    --color-primario: #C2E5F5;
+    --color-secundario: #FFFFFF;
+    --color-boton: #4FB7E1;
+    --color-fondo: #ECF9FF;
+    --color-letra: #000;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.registro{
+    max-width: 700px;
+    width: 100%;
+    padding: 25px 30px;
+    background-color: var(--color-primario);
+    border-radius: 10px;
+}

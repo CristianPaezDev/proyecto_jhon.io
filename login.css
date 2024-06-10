@@ -3,63 +3,113 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 :root{
     --color-primario: #C2E5F5;
     --color-secundario: #FFFFFF;
     --color-boton: #4FB7E1;
+    --color-fondo: #ECF9FF;
+    --color-letra: #000;
 }
+
 body{
-    font-family: 'Roboto', sans-serif;
-    background-size: 20px 20px;
-    background-position: 0 0,10px 10px;
-    display: flex;
-    min-height: 100vh;
-}
-.formulario{
-    margin: auto;
-    width: 100vh;
-    max-width: 450px;
-    padding: 4.5em 3em;
-    border-radius: 10px;
-    box-shadow: 10px;
-    background-color: var(--color-primario);
-}
-.formulario__titulo{
     display: flex;
     justify-content: center;
-}
-
-.contenedor{
-    margin-top: 30px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-fondo);
 }
-.contenedor__grupo{
-    position: relative;
-    background-color: var(--color-secundario);
-    border-radius: 10px;
-}
-.contenedor__input{
-    background: none;
-    padding: 10px;
-    border: none;
-    font-family:'Roboto', sans-serif; 
-    height: 4vh;
-    font-size: 10px;
+.wrapper{
+    width: 420px;
+    background-color: var(--color-primario);
+    color: var(--color-letra);
+    border-radius: 15px;
+    padding: 30px 40px;
 }
 
-.contenedor__submit{
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .input-box{
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border-radius: 40px;
+    border-color: #4FB7E1;
+    font-size: 16px;
+    color: var(--color-letra);
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: var(--color-letra);
+}
+
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.wrapper .remember-forgot{
     display: flex;
-    justify-content: center;
-    background: var(--color-boton) ;
-    color: #fff;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input{
+    accent-color: var(--color-letra);
+    margin-right: 8px;
+}
+
+.remember-forgot a{
+    color: var(--color-letra);
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: var(--color-boton);
     border: none;
-    border-radius: 10px;
-    width: 100px;
-    height: 40px;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--color-letra);
+    font-weight: 600;
+}
+
+.wrapper .register-link{
+    font-size: 14px;
+    text-align: center;
+    margin: 30px 0 15px;
+}
+
+.register-link p a{
+    color: var(--color-letra);
+    text-align: center;
+    font-weight: 600;
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
 
 }

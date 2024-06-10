@@ -4,31 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
-    <title>Login</title>
+    <title>Document</title>
 </head>
 <body>
-    <form class="formulario">
-        <h2 class="formulario__titulo">Maravilla</h2>
-        
-        <div class="contenedor">
-            <p>Ingresa tu usuario</p>
-            <div class="contenedor__grupo">
-                <input type="text" id="name" class="contenedor__input" placeholder="">
-                <label for="name" class="contenedor__label"></label>
-                <span class="contenedor__span"></span>
+    <section class="wrapper">
+        <form action="">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Usuario" required>
             </div>
 
-            <p>Ingresa tu contraseña</p>
-            <div class="contenedor__grupo">
-                <input type="password" id="name" class="contenedor__input" placeholder="">
-                <label for="name" class="contenedor__label"></label>
-                <span class="contenedor__span"></span>
+            <div class="input-box">
+                <input type="password" placeholder="Contraseña" required>
             </div>
-            
-            <input type="submit" class="contenedor__submit" value="Ingresar">
-            <a>¿Olvido su contraseña?</a>
-            <a>Volver</a>
-        </div>
-    </form>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox">Recordar Contraseña</label>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>¿No tienes una cuenta? <a href="registro.html">Registrase</a></p>
+            </div>
+        
+        </form>
+    </section>
 </body>
 </html>
