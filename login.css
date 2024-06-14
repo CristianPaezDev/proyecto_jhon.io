@@ -11,6 +11,8 @@
     --color-boton: #4FB7E1;
     --color-fondo: #ECF9FF;
     --color-letra: #000;
+    --color_input: #f2f2f2;
+    --color_bordes : #4FB7E1;
 }
 
 body{
@@ -42,10 +44,10 @@ body{
 .input-box input{
     width: 100%;
     height: 100%;
-    background: transparent;
+    background: var(--color_input);
     outline: none;
     border-radius: 40px;
-    border-color: #4FB7E1;
+    border-color: var(--color_bordes);
     font-size: 16px;
     color: var(--color-letra);
     padding: 20px 45px 20px 20px;
