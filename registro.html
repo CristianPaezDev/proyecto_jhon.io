@@ -10,33 +10,52 @@
     <section class="registro">
         <article class="container">
             <h1 class="container__title">Registro</h1>
-            <form action="#">
+            <form id="form-validation" novalidate>
                 <div class="form-group">
                     <span>Nombre</span>
-                    <input type="text" placeholder="Ingresa tu tu nombre">
+                    <input type="text" placeholder="Ingresa tu nombre" required>
+                    <small>Por favor ingresa tu nombre</small>
                 </div>
 
                 <div class="form-group">
                     <span>Apellido</span>
-                    <input type="text" placeholder="Ingresa tu tu apellido">
+                    <input type="text" placeholder="Ingresa tu apellido" required>
+                    <small>Por favor ingresa tu apellido</small>
                 </div>
 
                 <div class="form-group">
                     <span>Telefono</span>
-                    <input type="text" placeholder="Ingresa tu tu telefono">
+                    <input type="text" placeholder="Ingresa tu telefono" required>
+                    <small>Por favor ingresa tu telefono</small>
                 </div>
 
                 <div class="form-group">
                     <span>Direccion</span>
-                    <input type="text" placeholder="Ingresa tu direccion">
+                    <input type="text" placeholder="Ingresa tu direccion" required>
+                    <small>Por favor ingresa tu direccion</small>
                 </div>
 
                 <div class="form-group">
                     <span>Contraseña</span>
-                    <input type="password" placeholder="Ingresa tu contraseña">
+                    <input type="password" placeholder="Ingresa tu contraseña" required>
+                    <small>Por favor ingresa tu contraseña</small>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Registrate">
                 </div>
             </form>
+            <script>
+                const addform = document.getElementById("form-validation");
+                addform.addEventListener("submit", (e)=>{
+                    if (addform.checkValidity() === false){
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addform.classList.add('was-validate');
+                    }
+                });
+            </script>
         </article>
     </section>
+    
 </body>
 </html>
