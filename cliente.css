@@ -8,9 +8,14 @@
 
 :root{
   --color-header: #C2E5F5;
+  --color-borde: #B1DAF6;
+  --color-tabla: #009879;
+  --color-secundario: #4FB7E1;
+  --color-letra: #000;
+  --color-hover: #184962;
 }
 
-.header{
+.encabezado{
   background: var(--color-header);
   display: flex;
   justify-content: center;
@@ -18,19 +23,100 @@
   height: 80px;
 }
 
-.header__section--h1{
+.encabezado__section--h1{
   font-size: 40px;
 }
 
-.main{
-  background: blueviolet;
+.botones{
+  margin-top: 20px;
+  height: 44px;
 }
-
-.main__section--a{
-  background-color: aqua;
-}
-
-.main__section--article{
+.botones__section--article{
   display: flex;
-  justify-content: space-between
+  justify-content: space-around;
+  align-items: center;
+}
+
+.botones__section--a{
+  border: solid 1px var(--color-secundario);
+  border-radius: 10px;
+  height: 40px;
+  width: 120px;
+  background: none;
+}
+.cliente {
+  background-color: var(--color-secundario);
+}
+
+.cliente:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+
+.salir {
+  text-decoration: none;
+  background-color: var(--color-borde);
+}
+
+.salir:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 1s;
+}
+
+.agregar {
+  text-decoration: none;
+  background-color: var(--color-borde);
+}
+
+.agregar:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 1s;
+}
+
+.tb{
+  display: flex;
+  justify-content: center;
+}
+
+.content-table{
+  width: 80%;
+  border-collapse: collapse;
+  margin: 150px auto;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr{
+  background-color: var(--color-tabla);
+  color: var(--color-letra);
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td{
+  padding: 12px 15px;
+}
+
+.content-table tbody tr{
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even){
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type{
+  border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row{
+  font-weight: bold;
+  color: #009879;
 }
