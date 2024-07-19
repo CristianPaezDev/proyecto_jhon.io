@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Varela+Round&display=swap');
 
+*{
+  box-sizing: border-box;
+}
+
 :root{
     --color-header: #C2E5F5;
     --color-borde: #B1DAF6;
@@ -21,22 +25,29 @@
 }
 
 .botones{
-  margin-top: 20px;
-  height: 44px;
+  margin-top: 40px;
 }
 .botones__section--article{
   display: flex;
   justify-content: space-around;
-  align-items: center;
+
 }
 
 .botones__section--a{
   border: solid 1px var(--color-secundario);
   border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--color-letra);
   height: 40px;
+  line-height: 40px;
   width: 120px;
-  background: none;
+  display: inline-block;
+  text-align: center;
+  /* cursor: pointer; */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .salir {
   text-decoration: none;
