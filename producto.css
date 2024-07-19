@@ -1,0 +1,37 @@
+@import url(botones.css);
+@import url(tabla.css);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.producto {
+  background-color: var(--color-secundario);
+}
+
+.producto:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+  
+.cliente:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+
+.empleado:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+
+.venta:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}

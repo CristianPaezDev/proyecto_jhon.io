@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Varela+Round&display=swap');
+
+:root{
+    --color-header: #C2E5F5;
+    --color-borde: #B1DAF6;
+    --color-tabla: #009879;
+    --color-secundario: #4FB7E1;
+    --color-letra: #000;
+    --color-hover: #184962;
+  }
+  
+.encabezado{
+  background: var(--color-header);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+.encabezado__section--h1{
+  font-size: 40px;
+}
+
+.botones{
+  margin-top: 20px;
+  height: 44px;
+}
+.botones__section--article{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.botones__section--a{
+  border: solid 1px var(--color-secundario);
+  border-radius: 10px;
+  height: 40px;
+  width: 120px;
+  background: none;
+}
+
+.salir {
+  text-decoration: none;
+  background-color: var(--color-borde);
+}
+
+.salir:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 1s;
+}
+
+.agregar {
+  text-decoration: none;
+  background-color: var(--color-borde);
+}
+
+.agregar:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 1s;
+}
