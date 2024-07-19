@@ -33,6 +33,7 @@ body{
     padding: 25px 30px;
     background-color: var(--color-primario);
     border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .container__title{
@@ -67,6 +68,10 @@ form span{
     padding-left: 15px;
     border-radius: 40px;
     transition: all 0.3s ease; 
+}
+
+.form-group input.error {
+    border-color: var(--color-error);
 }
 
 .form-group input:focus,
