@@ -13,6 +13,7 @@
     --color-fondo: #ECF9FF;
     --color-letra: #000;
     --color-error: #ff0000;
+    --color-bien:#b2fab6;
 }
 
 small{
@@ -72,6 +73,10 @@ form span{
 
 .form-group input.error {
     border-color: var(--color-error);
+}
+
+.form-group input.bien{
+    border-color: var(--color-bien);
 }
 
 .form-group input:focus,

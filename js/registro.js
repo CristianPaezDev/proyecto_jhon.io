@@ -1,3 +1,5 @@
+import {letras} from "./letras";
+
 let nombre = document.querySelector("#nombre");
 let apellido = document.querySelector("#apellido");
 let telefono = document.querySelector("#telefono");
@@ -6,12 +8,7 @@ let contrasena = document.querySelector("#contrasena");
 let confirmaContrasena = document.querySelector("#confirmarcontrasena");
 let form = document.querySelector("#form-validation");
 
-function letras(event, elemento) {
-    let regex = /^[a-zA-Zá\s]+$/;
-    if (!regex.test(event.key)) {
-        event.preventDefault();
-    }
-}
+
 
 function numeros(event, element) {
     let regex = /^\d{0,10}$/;
@@ -34,34 +31,15 @@ function contraigual(contrasena, confirmaContrasena) {
     }
 }
 
-function validarFormulario(event) {
-    event.preventDefault();
-    let isValid = true;
+nombre.addEventListener('keypress', function (event){
+    letras(event, nombre);
+})
 
-    let inputs = [nombre, apellido, telefono, direccion, contrasena, confirmaContrasena];
-    
-    inputs.forEach(input => {
-        if (input.value.trim() === "") {
-            input.classList.add('error');
-            isValid = false;
-        } else {
-            input.classList.remove('error');
-        }
-    });
+nombre.addEventListener('blur', function (event){
+    letras(event, nombre);
+})
 
-    if (!contraigual(contrasena, confirmaContrasena)) {
-        isValid = false;
-    }
 
-    if (isValid) {
-        alert("Rejistro completado con éxito");
-        form.submit(); 
-    } else {
-        alert("Por favor completa todos los campos correctamente.");
-    }
-}
-
-nombre.addEventListener("keypress", (event) => letras(event, nombre));
 apellido.addEventListener("keypress", (event) => letras(event, apellido));
 telefono.addEventListener('keypress', function(event) {
     numeros(event, telefono);
