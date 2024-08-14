@@ -1,12 +1,12 @@
 import {letras} from "./letras";
 
+let form = document.querySelector("#form-validation");
 let nombre = document.querySelector("#nombre");
 let apellido = document.querySelector("#apellido");
 let telefono = document.querySelector("#telefono");
 let direccion = document.querySelector("#direccion");
 let contrasena = document.querySelector("#contrasena");
 let confirmaContrasena = document.querySelector("#confirmarcontrasena");
-let form = document.querySelector("#form-validation");
 
 
 
