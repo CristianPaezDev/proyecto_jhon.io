@@ -1,4 +1,5 @@
-import {letras} from "./letras.js";
+import is_letters from "./letras.js"
+import is_empty from "./is_empty.js";
 import valid from "./valid.js";
 import solicitud, { enviar } from "./ajax.js";
 
@@ -68,20 +69,20 @@ form.addEventListener('submit', (event) => {
     }
 })
 
-nombre.addEventListener('keypress', function (event){
-    letras(event, nombre);
+nombre.addEventListener("blur", (event) => {
+    is_empty(event, nombre)
 })
 
-nombre.addEventListener('blur', function (event){
-    letras(event, nombre);
+nombre.addEventListener('keypress', (event) => {
+    is_letters(event, nombre);
 })
 
 apellido.addEventListener('keypress', function (event){
-    letras(event, apellido);
+    is_letters(event, apellido);
 })
 
 apellido.addEventListener('blur', function (event){
-    letras(event, apellido);
+    is_letters(event, apellido);
 })
 
 telefono.addEventListener('keypress', function(event) {
