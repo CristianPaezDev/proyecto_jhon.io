@@ -1,12 +1,15 @@
-import {letras} from "./letras";
+import {letras} from "./letras.js";
+import valid from "./valid.js";
+import solicitud, { enviar } from "./ajax.js";
 
-let form = document.querySelector("#form-validation");
-let nombre = document.querySelector("#nombre");
-let apellido = document.querySelector("#apellido");
-let telefono = document.querySelector("#telefono");
-let direccion = document.querySelector("#direccion");
-let contrasena = document.querySelector("#contrasena");
-let confirmaContrasena = document.querySelector("#confirmarcontrasena");
+const form = document.querySelector("#form-validation");
+const nombre = document.querySelector("#nombre");
+const apellido = document.querySelector("#apellido");
+const telefono = document.querySelector("#telefono");
+const direccion = document.querySelector("#direccion");
+const contrasena = document.querySelector("#contrasena");
+const confirmaContrasena = document.querySelector("#confirmarcontrasena");
+
 
 
 
@@ -31,6 +34,40 @@ function contraigual(contrasena, confirmaContrasena) {
     }
 }
 
+
+form.addEventListener('submit', (event) => {
+    let response = valid(event, "form [required]");
+
+    const data = {
+        nombre: nombre.value,
+        apellido: apellido.value,
+        telefono: telefono.value,
+        direccion: direccion.value,
+        contrasena: contrasena.value,
+        confirmaContrasena: confirmaContrasena.value
+    }
+    console.log(data);
+
+    if(response){
+        fetch('http://localhost:3000/cliente',{
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            nombre.value = "";
+            apellido.value = "";
+            telefono.value = "";
+            direccion.value = "";
+            contrasena.value = "";
+            confirmaContrasena.value = "";
+        });
+    }
+})
+
 nombre.addEventListener('keypress', function (event){
     letras(event, nombre);
 })
@@ -39,8 +76,14 @@ nombre.addEventListener('blur', function (event){
     letras(event, nombre);
 })
 
+apellido.addEventListener('keypress', function (event){
+    letras(event, apellido);
+})
 
-apellido.addEventListener("keypress", (event) => letras(event, apellido));
+apellido.addEventListener('blur', function (event){
+    letras(event, apellido);
+})
+
 telefono.addEventListener('keypress', function(event) {
     numeros(event, telefono);
 });
@@ -51,4 +94,3 @@ confirmaContrasena.addEventListener('keypress', function(event) {
     numeros(event, confirmaContrasena);
 });
 
-form.addEventListener('submit', validarFormulario);

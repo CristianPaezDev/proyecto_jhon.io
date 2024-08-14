@@ -1,20 +1,53 @@
 {
-    "cliente": [
-        {
-            
-        }
-        
-    ],
-    "empleado": 
-    [
-        {
-            
-        }
-    ],
-    "profile": 
-    [
-        {
-
-        }
-    ]
+  "cliente": [
+    {
+      "id": "7ad7"
+    },
+    {
+      "id": "fa27",
+      "Nombre": "Cristian",
+      "Apellido": "paez",
+      "Telefono": "3128258894",
+      "Direccion": "calle 32 35 c 52",
+      "Contrasena": "123",
+      "Conf_contra": "123"
+    },
+    {
+      "id": "d522",
+      "Nombre": "Cristian",
+      "Apellido": "paez",
+      "Telefono": "3128258894",
+      "Direccion": "calle 32 35 c 52",
+      "Contrasena": "123",
+      "Conf_contra": "123"
+    },
+    {
+      "id": "2f76",
+      "Nombre": "Cristian",
+      "Apellido": "paez",
+      "Telefono": "3128258894",
+      "Direccion": "calle 32 35 c 52",
+      "Contrasena": "123",
+      "Conf_contra": "123"
+    },
+    {
+      "id": "5369",
+      "nombre": "samir",
+      "apellido": "ariza",
+      "telefono": "3128258894",
+      "direccion": "calle 32 35 c 52",
+      "contrasena": "123",
+      "confirmaContrasena": "123"
+    }
+  ],
+  "empleado": [
+    {
+      "id": "0fc0"
+    }
+  ],
+  "profile": [
+    {
+      "id": "cd7e"
+    }
+  ]
 }
