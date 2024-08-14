@@ -19,13 +19,16 @@
 .content-table thead tr{
   background-color: var(--color-tabla);
   color: var(--color-letra);
-  text-align: left;
   font-weight: bold;
 }
 
 .content-table th,
 .content-table td{
   padding: 12px 15px;
+}
+
+.content-table tbody{
+  text-align: center;
 }
 
 .content-table tbody tr{

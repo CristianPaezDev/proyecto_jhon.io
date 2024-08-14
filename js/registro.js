@@ -1,7 +1,7 @@
 import is_letters from "./letras.js"
 import is_empty from "./is_empty.js";
 import valid from "./valid.js";
-import solicitud, { enviar } from "./ajax.js";
+import numeros from "./numeros.js";
 
 const form = document.querySelector("#form-validation");
 const nombre = document.querySelector("#nombre");
@@ -14,13 +14,16 @@ const confirmaContrasena = document.querySelector("#confirmarcontrasena");
 
 
 
-function numeros(event, element) {
-    let regex = /^\d{0,10}$/;
-    let newValue = element.value + event.key;
-    if (!regex.test(newValue)) {
-        event.preventDefault();
+const cantidad = (elemento) => {
+    let valor = elemento.value.length === 10;
+    if (valor) {
+      elemento.classList.remove("error");
+      elemento.classList.add("correcto");
+    } else {
+      elemento.classList.remove("correcto")
+      elemento.classList.add("error")
     }
-}
+  }
 
 function contraigual(contrasena, confirmaContrasena) {
     if (contrasena.value !== confirmaContrasena.value) {
@@ -73,25 +76,26 @@ nombre.addEventListener("blur", (event) => {
     is_empty(event, nombre)
 })
 
+apellido.addEventListener('blur', (event) =>{
+    is_letters(event, apellido);
+})
+
+telefono.addEventListener("blur", (event) => {
+    cantidad(telefono);
+    numeros(event, telefono);
+  });
+
 nombre.addEventListener('keypress', (event) => {
     is_letters(event, nombre);
 })
 
-apellido.addEventListener('keypress', function (event){
+apellido.addEventListener('keypress', (event) => {
     is_letters(event, apellido);
 })
 
-apellido.addEventListener('blur', function (event){
-    is_letters(event, apellido);
-})
+telefono.addEventListener("keypress", numeros)
 
-telefono.addEventListener('keypress', function(event) {
-    numeros(event, telefono);
-});
-contrasena.addEventListener('keypress', function(event) {
-    numeros(event, contrasena);
-});
-confirmaContrasena.addEventListener('keypress', function(event) {
-    numeros(event, confirmaContrasena);
-});
+contrasena.addEventListener('keypress', numeros);
+
+confirmaContrasena.addEventListener('keypress', numeros);
 
