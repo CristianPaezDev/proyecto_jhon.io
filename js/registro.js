@@ -11,100 +11,104 @@ const direccion = document.querySelector("#direccion");
 const contrasena = document.querySelector("#contrasena");
 const confirmaContrasena = document.querySelector("#confirmarcontrasena");
 
-document
-  .getElementById("form-validation")
-  .addEventListener("submit", function (event) {
-    // Obtener los valores de los campos de contraseña
-    const contrasena = document.getElementById("contrasena").value;
-    const confirmarContrasena = document.getElementById(
-    "confirmarcontrasena"
-    ).value;
+form.addEventListener('submit', (event) => {
+    // Prevenir el envío del formulario si hay campos vacíos
+    const requiredFields = form.querySelectorAll("[required]");
+    const emptyFields = [];
+    let isFormValid = true;
 
-    // Comparar las contraseñas
-    if (contrasena !== confirmarContrasena) {
-      event.preventDefault(); // Evitar el envío del formulario
-    alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            emptyFields.push(field.name || field.id || field.placeholder || 'Campo sin nombre');
+            isFormValid = false;
+        }
+    });
+
+    // Validar contraseñas
+    const contrasenaValue = contrasena.value.trim();
+    const confirmaContrasenaValue = confirmaContrasena.value.trim();
+    if (contrasenaValue !== confirmaContrasenaValue) {
+        alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+        isFormValid = false;
     }
-});
 
-const cantidad = (elemento) => {
-  let valor = elemento.value.length === 10;
-  if (valor) {
-    elemento.classList.remove("error");
-    elemento.classList.add("correcto");
-  } else {
-    elemento.classList.remove("correcto");
-    elemento.classList.add("error");
-  }
-};
+    if (emptyFields.length > 0) {
+        // Mostrar alerta con los campos vacíos
+        alert(`Por favor, complete los siguientes campos:\n${emptyFields.join(', ')}`);
+        isFormValid = false;
+    }
 
-form.addEventListener("submit", (event) => {
-  let response = valid(event, "form [required]");
+    if (!isFormValid) {
+        event.preventDefault();
+        return; // Detener el envío del formulario si no es válido
+    }
 
-  const data = {
-    nombre: nombre.value,
-    apellido: apellido.value,
-    telefono: telefono.value,
-    direccion: direccion.value,
-    contrasena: contrasena.value,
-    confirmaContrasena: confirmaContrasena.value,
-  };
-  console.log(data);
+    // Si todos los campos están llenos y las contraseñas coinciden, proceder con el envío
+    const data = {
+        nombre: nombre.value,
+        apellido: apellido.value,
+        telefono: telefono.value,
+        direccion: direccion.value,
+        contrasena: contrasena.value,
+        confirmaContrasena: confirmaContrasena.value
+    };
 
-  if (response) {
-    fetch("http://localhost:3000/cliente", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    console.log(data);
+
+    fetch('http://localhost:3000/cliente', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
-      .then((response) => response.json())
-      .then((json) => {
+    .then(response => response.json())
+    .then(json => {
+        // Limpiar los campos del formulario
         nombre.value = "";
         apellido.value = "";
         telefono.value = "";
         direccion.value = "";
         contrasena.value = "";
         confirmaContrasena.value = "";
-      });
-  }
+    })
+    .catch(error => console.error('Error al enviar los datos:', error));
 });
 
+// Validación en los eventos blur
 nombre.addEventListener("blur", (event) => {
-  is_letters(event, nombre);
+    is_letters(event, nombre);
 });
 
 apellido.addEventListener("blur", (event) => {
-  is_letters(event, apellido);
+    is_letters(event, apellido);
 });
 
 direccion.addEventListener("blur", (event) => {
-  is_empty(event, direccion);
+    is_empty(event, direccion);
 });
+
 telefono.addEventListener("blur", (event) => {
-  cantidad(telefono);
-  numeros(event, telefono);
+    is_empty(event, telefono);
 });
 
 contrasena.addEventListener("blur", (event) => {
-  is_empty(event, contrasena);
+    is_empty(event, contrasena);
 });
 
 confirmaContrasena.addEventListener("blur", (event) => {
-  is_empty(event, confirmaContrasena);
+    is_empty(event, confirmaContrasena);
 });
 
+// Validación en los eventos keypress
 nombre.addEventListener("keypress", (event) => {
-  is_letters(event, nombre);
+    is_letters(event, nombre);
 });
 
 apellido.addEventListener("keypress", (event) => {
-  is_letters(event, apellido);
+    is_letters(event, apellido);
 });
 
 telefono.addEventListener("keypress", numeros);
-
 contrasena.addEventListener("keypress", numeros);
-
 confirmaContrasena.addEventListener("keypress", numeros);

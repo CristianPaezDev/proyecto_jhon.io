@@ -71,6 +71,42 @@
       "direccion": "call 25 68",
       "contrasena": "123",
       "confirmaContrasena": "123"
+    },
+    {
+      "id": "b05f",
+      "nombre": "andres ",
+      "apellido": "lazaro",
+      "telefono": "3164654654",
+      "direccion": "ciudadela confenalco",
+      "contrasena": "123",
+      "confirmaContrasena": "122"
+    },
+    {
+      "id": "6bcc",
+      "nombre": "andres ",
+      "apellido": "lazaro",
+      "telefono": "2132123132",
+      "direccion": "call 25 68",
+      "contrasena": "123",
+      "confirmaContrasena": "321"
+    },
+    {
+      "id": "11ca",
+      "nombre": "andres ",
+      "apellido": "paez",
+      "telefono": "3132153415",
+      "direccion": "cla 45",
+      "contrasena": "321",
+      "confirmaContrasena": "123"
+    },
+    {
+      "id": "ba1c",
+      "nombre": "andres ",
+      "apellido": "lazaro",
+      "telefono": "3213165161",
+      "direccion": "45 56 CR",
+      "contrasena": "123",
+      "confirmaContrasena": "123"
     }
   ],
   "empleado": [
