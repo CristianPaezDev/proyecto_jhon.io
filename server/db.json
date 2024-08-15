@@ -1,7 +1,13 @@
 {
   "cliente": [
     {
-      "id": "7ad7"
+      "id": "7ad7",
+      "Nombre": "Cristian",
+      "Apellido": "paez",
+      "Telefono": "3128258894",
+      "Direccion": "calle 32 35 c 52",
+      "Contrasena": "123",
+      "Conf_contra": "123"
     },
     {
       "id": "fa27",
