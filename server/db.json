@@ -62,6 +62,15 @@
       "direccion": "calle 32 35 c 52",
       "contrasena": "123",
       "confirmaContrasena": "123"
+    },
+    {
+      "id": "0c27",
+      "nombre": "Lilia",
+      "apellido": "ariza",
+      "telefono": "3128258894",
+      "direccion": "call 25 68",
+      "contrasena": "123",
+      "confirmaContrasena": "123"
     }
   ],
   "empleado": [
