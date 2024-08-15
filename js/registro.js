@@ -17,13 +17,13 @@ const confirmaContrasena = document.querySelector("#confirmarcontrasena");
 const cantidad = (elemento) => {
     let valor = elemento.value.length === 10;
     if (valor) {
-      elemento.classList.remove("error");
-      elemento.classList.add("correcto");
+        elemento.classList.remove("error");
+        elemento.classList.add("correcto");
     } else {
-      elemento.classList.remove("correcto")
-      elemento.classList.add("error")
+        elemento.classList.remove("correcto")
+        elemento.classList.add("error")
     }
-  }
+}
 
 function contraigual(contrasena, confirmaContrasena) {
     if (contrasena.value !== confirmaContrasena.value) {
@@ -83,7 +83,7 @@ apellido.addEventListener('blur', (event) =>{
 telefono.addEventListener("blur", (event) => {
     cantidad(telefono);
     numeros(event, telefono);
-  });
+});
 
 nombre.addEventListener('keypress', (event) => {
     is_letters(event, nombre);

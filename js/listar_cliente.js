@@ -1,34 +1,58 @@
-import solicitud from "./ajax.js"
+import solicitud from "./ajax.js";
 
 const $template = document.getElementById("users").content;
 const fragmento = document.createDocumentFragment();
-const table = document.querySelector("content-table");
+const tableBody = document.querySelector("#tbody");
 
-
+const normalizeClientData = (client) => {
+    return {
+        id: client.id,
+        first_name: client.Nombre || client.nombre || "",
+        last_name: client.Apellido || client.apellido || "",
+        phone: client.Telefono || client.telefono || "",
+        address: client.Direccion || client.direccion || "",
+        type_id: client.Contrasena || client.contrasena || ""
+    };
+};
 
 const listar = async () => {
-    const data = await solicitud('cliente');
+    try {
+        const data = await solicitud('cliente');
+        
+        // console.log('Datos recibidos:', data);  // Descomentar para ver los datos en consola
 
-    data.forEach((element) => {
-        $template.querySelector("tr").id = `user_${element.id}`;
-        $template.querySelector(".first_name").textContent = element.first_name;
-        $template.querySelector(".last_name").textContent = element.last_name;
-        $template.querySelector(".phone").textContent = element.phone;
-        $template.querySelector(".address").textContent = element.address;
-        $template.querySelector(".type_id").textContent = element.type_id;
+        if (data.error) {
+            throw new Error(data.error);
+        }
 
-        $template.querySelector(".edit").setAttribute("data-id", element.id);
-        $template.querySelector(".delete").setAttribute("data-id", element.id);
+        if (!Array.isArray(data)) {
+            throw new Error('Formato de datos inesperado');
+        }
 
-        let clone = document.importNode($template, true);
-        fragmento.appendChild(clone);
-    });
-    table.querySelector('tbody').appendChild(fragmento)
-}
-addEventListener("DOMContentLoaded", (event) => {
-    documentos();
-    listar();
-    if (!politicas.checked) {
-      button.setAttribute("disabled", "");
+        const clients = data.map(normalizeClientData);
+
+        clients.forEach((element) => {
+            const clone = document.importNode($template, true);
+            clone.querySelector("tr").id = `user_${element.id}`;
+            clone.querySelector(".id").textContent = element.id; // Añadido para mostrar el ID
+            clone.querySelector(".first_name").textContent = element.first_name;
+            clone.querySelector(".last_name").textContent = element.last_name;
+            clone.querySelector(".phone").textContent = element.phone;
+            clone.querySelector(".address").textContent = element.address;
+            clone.querySelector(".type_id").textContent = element.type_id;
+
+            clone.querySelector(".edit").setAttribute("data-id", element.id);
+            clone.querySelector(".delete").setAttribute("data-id", element.id);
+
+            fragmento.appendChild(clone);
+        });
+
+        tableBody.appendChild(fragmento);
+    } catch (error) {
+        console.error('Error al listar los clientes:', error.message || error);
     }
-  });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    listar();
+});

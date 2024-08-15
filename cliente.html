@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,7 @@
   <main class="botones">
     <section class="botones__section">
       <article class="botones__section botones__section--article">
-        <div class="">
+        <div>
           <a href="#" class="botones__section botones__section--a cliente">Cliente</a>
           <a href="producto.html" class="botones__section botones__section--a producto">Producto</a>
           <a href="empleado.html" class="botones__section botones__section--a empleado">Empleado</a>
@@ -26,39 +26,47 @@
         </div>
 
         <div>
-          <a href="newCliente.html" class="botones__section botones__section--a  agregar">Añadir cliente</a>
-          <a href="index.html" class="botones__section botones__section--a  salir">Salir</a>
+          <a href="newCliente.html" class="botones__section botones__section--a agregar">Añadir cliente</a>
+          <a href="index.html" class="botones__section botones__section--a salir">Salir</a>
         </div>
       </article>
     </section>
 
-      <section class="tb">
-        <table class="content-table">
-          <thead>
-            <tr>
-              <th class="">Código</th>
-              <th class="">Nombre</th>
-              <th class="">Apellido</th>
-              <th class="">Teléfono</th>
-              <th class="">Dirección</th>
-              <th class="">Contraseña</th>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-            <tr>
-              
-            </tr>
-            <tr class="active-row">
-              
-            </tr><div class=""></div>
-            <tr>
-              
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    
+    <section class="tb">
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Contraseña</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <!-- Aquí se insertarán los datos -->
+        </tbody>
+      </table>
+    </section>
   </main>
-  <script src="listar_cliente.js" type="module"></script>
+
+  <template id="users">
+    <tr>
+      <td class="id"></td>
+      <td class="first_name"></td>
+      <td class="last_name"></td>
+      <td class="phone"></td>
+      <td class="address"></td>
+      <td class="type_id"></td>
+      <td>
+        <button class="edit">Editar</button>
+        <button class="delete">Eliminar</button>
+      </td>
+    </tr>
+  </template>
+
+  <script src="/js/listar_cliente.js" type="module"></script>
 </body>
 </html>
