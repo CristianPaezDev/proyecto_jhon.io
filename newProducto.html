@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registro.css">
+    <title>Rejistro Producto</title>
+</head>
+<body>
+    <section class="registro">
+        <article class="container">
+            <h1 class="container__title">Registro Producto</h1>
+            <form action="producto.html" id="form-validation" novalidate>
+                <div class="form-group">
+                    <span>Nombre</span>
+                    <input type="text" id="nombre" placeholder="Ingresa el nombre del producto" required>
+                    <small>Por favor ingresa tu nombre</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Tipo</span>
+                    <input type="text" id="tipo" placeholder="Ingresa tu apellido" required>
+                    <small>Por favor ingresa tu apellido</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Cantidad</span>
+                    <input type="text" id="cantidad" placeholder="Ingresa tu telefono" required>
+                    <small>Por favor ingresa tu telefono</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Marca</span>
+                    <input type="text" id="marca" placeholder="Ingresa tu direccion" required>
+                    <small>Por favor ingresa tu direccion</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Precio</span>
+                    <input type="text" id="precio" placeholder="Ingresa tu contraseña" required>
+                    <small>Por favor ingresa tu contraseña</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Fecha de vencimiento</span>
+                    <input type="datetime-local" id="fech_venc" placeholder="Confirmar tu contraseña" required>
+                    <small>Por favor confirma tu contraseña</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Descripcion</span>
+                    <input type="text" id="descripcion" placeholder="Confirmar tu contraseña" required>
+                    <small>Por favor confirma tu contraseña</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Proveedor</span>
+                    <input type="text" id="proveedor" placeholder="Confirmar tu contraseña" required>
+                    <small>Por favor confirma tu contraseña</small>
+                </div>
+
+                <div class="button">
+                    <input type="hidden" id="user_id">
+                    <input type="submit" value="Registrate">
+                </div>
+            </form>
+        </article>
+    </section>
+    <script src="/js/rejistro_producto.js" type="module"></script>
+</body>
+</html>

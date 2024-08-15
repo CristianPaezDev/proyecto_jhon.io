@@ -23,10 +23,11 @@
           <a href="#" class="botones__section botones__section--a producto">Producto</a>
           <a href="empleado.html" class="botones__section botones__section--a empleado">Empleado</a>
           <a href="#" class="botones__section botones__section--a venta">Venta</a>
+          <a href="proveedor.html" class="botones__section botones__section--a proveedor">Proveedor</a>
 
         </div>
         <div>
-          <a class="botones__section botones__section--a  agregar">Añadir producto</a>
+          <a href="newProducto.html" class="botones__section botones__section--a  agregar">Añadir producto</a>
           <a href="index.html" class="botones__section botones__section--a  salir">Salir</a>
         </div>
       </article>
@@ -39,33 +40,42 @@
             <tr>
               <th>Código</th>
               <th>Nombre</th>
-              <th>Dirección</th>
-              <th>Teléfono</th>
+              <th>Tipo</th>
+              <th>Cantidad</th>
+              <th>Marca</th>
+              <th>Precio</th>
+              <th>Fecha de vencimiento</th>
+              <th>Descripcion</th>
+              <th>Proveedor</th>
+              <th>Acciones</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>122</td>
-              <td>Cristian</td>
-              <td>calle 32</td>
-              <td>3128258894</td>
-            </tr>
-            <tr class="active-row">
-              <td>122</td>
-              <td>Cristian</td>
-              <td>calle 32</td>
-              <td>3128258894</td>
-            </tr>
-            <tr>
-              <td>122</td>
-              <td>Cristian</td>
-              <td>calle 32</td>
-              <td>3128258894</td>
-            </tr>
+          <tbody id="tbody">
+
           </tbody>
         </table>
       </section>
-    
   </main>
+
+  <template id="products">
+    <tr>
+        <td class="id"></td>
+        <td class="nombre"></td>
+        <td class="tipo"></td>
+        <td class="cantidad"></td>
+        <td class="marca"></td>
+        <td class="precio"></td>
+        <td class="fech_venc"></td>
+        <td class="descripcion"></td>
+        <td class="proveedor"></td>
+        <td>
+            <button class="edit">Editar</button>
+            <button class="delete">Eliminar</button>
+        </td>
+    </tr>
+</template>
+
+
+  <script src="/js/listar_producto.js" type="module"></script>
 </body>
 </html>

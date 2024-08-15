@@ -107,16 +107,49 @@
       "direccion": "45 56 CR",
       "contrasena": "123",
       "confirmaContrasena": "123"
+    },
+    {
+      "id": "366c",
+      "nombre": "edgar",
+      "apellido": "lazaro",
+      "telefono": "3254464654",
+      "direccion": "34",
+      "contrasena": "123",
+      "confirmaContrasena": "123"
     }
   ],
   "empleado": [
     {
-      "id": "0fc0"
+      "id": "9fc8",
+      "nombre": "andres ",
+      "apellido": "lazaro",
+      "telefono": "1321113321",
+      "direccion": "call 25 68",
+      "contrasena": "123",
+      "confirmaContrasena": "123"
+    },
+    {
+      "id": "bd57",
+      "nombre": "andres ",
+      "apellido": "lazaro",
+      "telefono": "2312321321",
+      "direccion": "sadf",
+      "contrasena": "123",
+      "confirmaContrasena": "123"
     }
   ],
-  "profile": [
+  "producto": [
     {
-      "id": "cd7e"
+      "id": "b8ea",
+      "nombre": "chocolatina",
+      "tipo": "chocolate",
+      "cantidad": "30",
+      "marca": "jett",
+      "precio": "3000",
+      "fech_venc": "2024-09-26T16:11",
+      "proveedor": "Candy ladys",
+      "descripcion": "Cajas de chocolatina X 30 und"
     }
-  ]
+  ],
+  "proveedor": []
 }
