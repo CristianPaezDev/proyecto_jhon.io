@@ -13,23 +13,34 @@ const normalizeProductData = (product) => {
         brand: product.marca || product.Marca || "",
         price: product.precio || product.Precio || "",
         expiration_date: product.fech_venc || product.Fech_venc || "",
-        supplier: product.proveedor || product.Proveedor || "",
+        supplier_id: product.proveedor || product.Proveedor || "",
         description: product.descripcion || product.Descripcion || "",
     };
 };
 
 const listar = async () => {
     try {
-        const data = await solicitud('producto');
+        // Obtener datos de productos y proveedores
+        const [data, proveedores] = await Promise.all([
+            solicitud('producto'),
+            solicitud('proveedor')
+        ]);
 
-        if (data.error) {
-            throw new Error(data.error);
+        if (data.error || proveedores.error) {
+            throw new Error(data.error || proveedores.error);
         }
 
-        if (!Array.isArray(data)) {
+        if (!Array.isArray(data) || !Array.isArray(proveedores)) {
             throw new Error('Formato de datos inesperado');
         }
 
+        // Mapear ID de proveedores a sus nombres
+        const proveedorMap = proveedores.reduce((map, proveedor) => {
+            map[proveedor.id] = proveedor.nombre;
+            return map;
+        }, {});
+
+        // Normalizar y procesar los datos de productos
         const products = data.map(normalizeProductData);
 
         products.forEach((element) => {
@@ -43,7 +54,9 @@ const listar = async () => {
             clone.querySelector(".precio").textContent = element.price;
             clone.querySelector(".fech_venc").textContent = element.expiration_date;
             clone.querySelector(".descripcion").textContent = element.description;
-            clone.querySelector(".proveedor").textContent = element.supplier;
+            
+            // Reemplazar el ID del proveedor con el nombre
+            clone.querySelector(".proveedor").textContent = proveedorMap[element.supplier_id] || "Desconocido";
 
             clone.querySelector(".edit").setAttribute("data-id", element.id);
             clone.querySelector(".delete").setAttribute("data-id", element.id);

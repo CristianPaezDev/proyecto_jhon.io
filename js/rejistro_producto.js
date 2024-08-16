@@ -2,6 +2,7 @@ import is_letters from "./letras.js";
 import is_empty from "./is_empty.js";
 import valid from "./valid.js";
 import numeros from "./numeros.js";
+import solicitud, { enviar } from  "./ajax.js";
 
 const form = document.querySelector("#form-validation");
 const nombre = document.querySelector("#nombre");
@@ -12,6 +13,48 @@ const precio = document.querySelector("#precio");
 const fech_venc = document.querySelector("#fech_venc");
 const proveedor = document.querySelector("#proveedor");
 const descripcion = document.querySelector("#descripcion");
+
+const tipos = () => {
+    const fragmento = document.createDocumentFragment();
+    let option = document.createElement("option");
+    option.value = "";
+    option.textContent = "Seleccione...";
+    fragmento.appendChild(option);
+
+    solicitud("tipo")
+        .then((data) => {
+            data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.id;
+                option.textContent = element.nombre;
+                fragmento.appendChild(option);
+            });
+            tipo.appendChild(fragmento);
+        });
+}
+
+const proveedores = () => {
+    const $fragmento = document.createDocumentFragment();
+    let option = document.createElement("option");
+    option.value = "";
+    option.textContent = "Seleccione...";
+    $fragmento.appendChild(option);
+
+    solicitud("proveedor")
+        .then((data) => {
+            data.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.id;
+                option.textContent = element.nombre;
+                $fragmento.appendChild(option);
+            });
+            proveedor.appendChild($fragmento);
+        });
+}
+
+
+tipos();
+proveedores();
 
 form.addEventListener('submit', (event) => {
     const requiredFields = form.querySelectorAll("[required]");
@@ -94,9 +137,6 @@ fech_venc.addEventListener("blur", (event) => {
     is_empty(event, fech_venc);
 });
 
-proveedor.addEventListener("blur", (event) => {
-    is_empty(event, proveedor);
-});
 
 descripcion.addEventListener("blur", (event) => {
     is_empty(event, descripcion);
@@ -110,6 +150,10 @@ nombre.addEventListener("keypress", (event) => {
 tipo.addEventListener("keypress", (event) => {
     is_letters(event, tipo);
 });
+
+// proveedor.addEventListener("keypress", (event) => {
+//     is_letters(event, proveedor);
+// });
 
 cantidad.addEventListener("keypress", numeros);
 

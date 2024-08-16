@@ -71,6 +71,17 @@ form span{
     transition: all 0.3s ease; 
 }
 
+.form-group select{
+    width: 100%;
+    height: 40px;
+    border-color: var(--color_bordes);
+    outline: none;
+    background: var(--color_input);
+    padding-left: 15px;
+    border-radius: 40px;
+    transition: all 0.3s ease; 
+}
+
 .form-group input.error {
     border-color: var(--color-error);
 }
@@ -78,9 +89,21 @@ form span{
 .form-group input.bien{
     border-color: var(--color-bien);
 }
+.form-group select.error {
+    border-color: var(--color-error);
+}
+
+.form-group select.bien{
+    border-color: var(--color-bien);
+}
 
 .form-group input:focus,
 .form-group input:valid{
+    border-color: var(--color-boton);
+}
+
+.form-group select:focus,
+.form-group select:valid{
     border-color: var(--color-boton);
 }
 

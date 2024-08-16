@@ -17,7 +17,7 @@ const normalizeClientData = (client) => {
 
 const listar = async () => {
     try {
-        const data = await solicitud('cliente');
+        const data = await solicitud('proveedor');
         
         // console.log('Datos recibidos:', data);  // Descomentar para ver los datos en consola
 
