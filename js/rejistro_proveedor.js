@@ -1,6 +1,5 @@
 import is_letters from "./letras.js";
 import is_empty from "./is_empty.js";
-import valid from "./valid.js";
 import numeros from "./numeros.js";
 
 const form = document.querySelector("#form-validation");
