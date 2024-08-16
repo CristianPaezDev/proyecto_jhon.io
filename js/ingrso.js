@@ -1,36 +1,41 @@
-import solicitud from "./ajax.js"; 
+import solicitud from "./ajax.js";
 
-const usuario = document.querySelector("#usuario");
-const contrasena = document.querySelector("#contrasena");
+document.querySelector("form").addEventListener("submit", async (event) => {
+  event.preventDefault();
 
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-document.querySelector('form').addEventListener('submit', async (event) => {
-    event.preventDefault(); 
+  if (!username || !password) {
+    alert("Por favor, complete ambos campos.");
+    return;
+  }
 
+  try {
+    // Solicita la lista de clientes desde el servidor
+    const clientes = await solicitud("cliente");
 
-    if (!usuario || !contrasena) {
-        alert("Por favor, complete ambos campos.");
-        return;
+    // Si hay un error en la solicitud, muestra una alerta
+    if (clientes.error) {
+      alert("Error al obtener la lista de clientes: " + clientes.error);
+      return;
     }
 
-    try {
-        // Obtener la lista de clientes desde el servidor.
-        const clientes = await solicitud('cliente');
+    // Busca un cliente con el nombre de usuario y contraseña proporcionados
+    const clienteEncontrado = clientes.find(
+      (cliente) =>
+        (cliente.Nombre === username || cliente.nombre === username) &&
+        (cliente.Contrasena === password || cliente.contrasena === password)
+    );
 
-        // Buscar el cliente con el nombre y contraseña ingresados.
-        const clienteEncontrado = clientes.find(cliente => 
-            (cliente.nombre === usuario) && (cliente.contrasena === contrasena)
-        );
-
-        if (clienteEncontrado) {
-            // Si el cliente es encontrado, redirigir a la página del cliente.
-            window.location.href = "cliente.html";
-        } else {
-            // Si no se encuentra, mostrar un mensaje de error.
-            alert("Usuario o contraseña incorrectos.");
-        }
-    } catch (error) {
-        console.error("Error al intentar iniciar sesión:", error);
-        alert("Hubo un problema con el inicio de sesión. Intente nuevamente.");
+    // Si el cliente fue encontrado, redirige a la página de cliente
+    if (clienteEncontrado) {
+      window.location.href = "cliente.html";
+    } else {
+      alert("Usuario o contraseña incorrectos.");
     }
+  } catch (error) {
+    console.error("Error al intentar iniciar sesión:", error);
+    alert("Hubo un problema con el inicio de sesión. Intente nuevamente.");
+  }
 });

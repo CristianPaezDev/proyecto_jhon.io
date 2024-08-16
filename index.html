@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
+    <title>Login</title>
+  </head>
+  <body>
     <section class="wrapper">
-        <form action="cliente.html">
-            <h1>Login</h1>
-            <div class="input-box">
-                <input id="usuario" type="text" placeholder="Usuario" >
-            </div>
+      <form action="cliente.html">
+        <h1>Login</h1>
+        <div class="input-box">
+          <input type="text" id="username" placeholder="Usuario" />
+        </div>
 
-            <div class="input-box">
-                <input id="contrasena" type="password" placeholder="Contraseña" >
-            </div>
+        <div class="input-box">
+          <input type="password" id="password" placeholder="Contraseña"/>
+        </div>
 
-            <div class="remember-forgot">
-                <label><input type="checkbox">Recordar Contraseña</label>
-                <!-- <a href="#">¿Olvidaste tu contraseña?</a> -->
-            </div>
+        <div class="remember-forgot">
+          <label><input type="checkbox" />Recordar Contraseña</label>
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
 
-            <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn">Login</button>
 
-            <div class="register-link">
-                <p>¿No tienes una cuenta? <a href="registro.html">Registrase</a></p>
-            </div>
-        </form>
+        <div class="register-link">
+          <p>¿No tienes una cuenta? <a href="registro.html">Registrarse</a></p>
+        </div>
+      </form>
     </section>
-    <script type="module" src="/js/ingrso.js"></script>
-</body>
+    <script src="/js/ingrso.js" type="module"></script>
+  </body>
 </html>
