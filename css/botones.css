@@ -11,6 +11,11 @@
     --color-secundario: #4FB7E1;
     --color-letra: #000;
     --color-hover: #184962;
+    --color-añadir: #19b2ff;
+    --color-cancelar: #eb1919;
+    --color-blanco: #ffffff;
+    --color-error: #ff0000;
+    --color-bien:#b2fab6;
   }
   
 .encabezado{

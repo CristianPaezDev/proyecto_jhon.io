@@ -89,13 +89,7 @@ form span{
 .form-group input.bien{
     border-color: var(--color-bien);
 }
-.form-group select.error {
-    border-color: var(--color-error);
-}
 
-.form-group select.bien{
-    border-color: var(--color-bien);
-}
 
 .form-group input:focus,
 .form-group input:valid{

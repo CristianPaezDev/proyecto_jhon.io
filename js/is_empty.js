@@ -1,11 +1,11 @@
-const is_empty = (event, element) => { 
-    if (element.value === "") {
+const is_empty = (element) => {
+  if (element.value === "") {
       element.classList.remove("bien");
       element.classList.add("error");
-    } else {
+  } else {
       element.classList.remove("error");
       element.classList.add("bien");
-    }
   }
-  
-  export default is_empty;
+}
+
+export default is_empty;

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Varela+Round&display=swap');
+@import url(botones.css);
+@import url(tabla.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.factura {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.factura__contenido {
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group samp {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-group select, input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid var(--color-secundario);
+    border-radius: 5px;
+}
+
+.form-group select{
+    width: 150px;
+    outline: none;
+}
+
+.form-group input.error, .form-group select.error {
+    border-color: var(--color-error);
+}
+
+.form-group input.bien, .form-group select.bien {
+    border-color: var(--color-bien);
+}
+
+.cantidad{
+    width: 100px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.button{
+    margin: 10px;
+}
+
+
+.agg {
+    background-color: var(--color-secundario);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.agg:hover{
+    background: var(--color-hover);
+    color: #fff;
+    transition: 1s;
+}
+.cancelar{
+    background-color: var(--color-cancelar);
+    color: var(--color-blanco);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+

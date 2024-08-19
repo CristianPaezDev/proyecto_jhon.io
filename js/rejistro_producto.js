@@ -33,11 +33,11 @@ const tipos = () => {
 }
 
 const proveedores = () => {
-    const $fragmento = document.createDocumentFragment();
+    const fragmento = document.createDocumentFragment();
     let option = document.createElement("option");
     option.value = "";
     option.textContent = "Seleccione...";
-    $fragmento.appendChild(option);
+    fragmento.appendChild(option);
 
     solicitud("proveedor")
         .then((data) => {
@@ -45,9 +45,9 @@ const proveedores = () => {
                 let option = document.createElement("option");
                 option.value = element.id;
                 option.textContent = element.nombre;
-                $fragmento.appendChild(option);
+                fragmento.appendChild(option);
             });
-            proveedor.appendChild($fragmento);
+            proveedor.appendChild(fragmento);
         });
 }
 
@@ -68,7 +68,7 @@ form.addEventListener('submit', (event) => {
     });
 
     if (emptyFields.length > 0) {
-        alert(`Por favor, complete los siguientes campos:\n${emptyFields.join(', ')}`);
+        alert(`Por favor, complete los siguientes campos:\n{emptyFields.join(', ')}`);
         isFormValid = false;
     }
 

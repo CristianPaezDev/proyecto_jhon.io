@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venta</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta</title>
+  <link rel="stylesheet" href="/css/venta.css">
 </head>
+
 <body>
     <header class="encabezado">
         <section class="encabezado__section">
@@ -16,32 +18,105 @@
 
       <main class="botones">
         <section class="botones_section">
-            <article class="botones_section botones__section--article">
-                <div>
-                    <a href="#" class="botones__section botones__section--a cliente">Cliente</a>
-                    <a href="producto.html" class="botones__section botones__section--a producto">Producto</a>
-                    <a href="empleado.html" class="botones__section botones__section--a empleado">Empleado</a>
-                    <a href="venta.html" class="botones__section botones__section--a venta">Venta</a>
-                    <a href="proveedor.html" class="botones__section botones__section--a proveedor">Proveedor</a>
-                </div>
-
-                <div>
-                    <a href="index.html" class="botones__section botones__section--a salir">Salir</a>
-                </div>
-
-                <div>
-                    
-                </div>
-
-            </article>
+          <article class="botones_section botones__section--article">
+            <div>
+              <a href="cliente.html" class="botones__section botones__section--a cliente">Cliente</a>
+              <a href="producto.html" class="botones__section botones__section--a producto">Producto</a>
+              <a href="empleado.html" class="botones__section botones__section--a empleado">Empleado</a>
+              <a href="#" class="botones__section botones__section--a venta">Venta</a>
+              <a href="proveedor.html" class="botones__section botones__section--a proveedor">Proveedor</a>
+            </div>
+                
+            <div>
+              <a href="index.html" class="botones__section botones__section--a salir">Salir</a>
+            </div>
+          </article>
         </section>
-
-        <section>
-            <article>
-
-            </article>
-        </section>
-
       </main>
+      
+      <form action="facturacion">
+        <section class="factura">
+          <article class="factura__contenido">
+            <div class="form-group">
+              <samp>Nombre Empleado</samp>
+              <select id="empleado"></select>
+            </div>
+  
+            <div class="form-group">
+              <samp>Nombre Cliente</samp>
+              <select id="cliente"></select>
+            </div>
+  
+            <div class="form-group">
+                <samp>Nombre Producto</samp>
+                <select id="producto"></select>
+            </div>
+  
+            <div class="form-group">
+                <samp>Descripción</samp>
+                <input type="text" id="descripcion" disabled>
+            </div>
+  
+            <div class="form-group">
+              <samp>Precio Unitario</samp>
+              <input type="number" class="cantidad" id="precio" disabled>
+            </div>
+            
+            <div class="form-group">
+              <samp>Cantidad</samp>
+              <input type="text" class="cantidad" id="cantidad">
+            </div>
+
+            <div class="buttons">
+              <div class="button">
+                <div class="button__acciones">
+                  <input type="hidden" id="agg">
+                  <input type="submit" class="agg" value="Añadir producto">
+                </div>
+              </div>
+    
+              <div class="button">
+                <input type="hidden" id="cancelar">
+                <input type="submit" class="cancelar" value="Cancelar">
+              </div>
+            </div>
+  
+          </article>
+        </section>
+      </form>
+        
+      <section class="tb">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Nombre Producto</th>
+              <th>Codigo</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+                <!-- Aquí se insertarán los datos -->
+          </tbody>
+        </table>
+      </section>
+            
+      <template id="users">
+        <tr>
+          <td class="nom_producto"></td>
+          <td class="codigo"></td>
+          <td class="pre_producto"></td>
+          <td class="cant_producto"></td>
+          <td class="total"></td>
+          <td>
+            <button class="edit">Editar</button>
+            <button class="delete">Eliminar</button>
+          </td>
+        </tr>
+    </template>
+    
+    <script type="module" src="/js/venta.js"></script>c
 </body>
 </html>
