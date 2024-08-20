@@ -12,25 +12,22 @@ document.querySelector("form").addEventListener("submit", async (event) => {
   }
 
   try {
-    // Solicita la lista de clientes desde el servidor
-    const clientes = await solicitud("cliente");
-
-    // Si hay un error en la solicitud, muestra una alerta
-    if (clientes.error) {
-      alert("Error al obtener la lista de clientes: " + clientes.error);
+    const empleados = await solicitud("empleado");
+  
+    if (!empleados || empleados.error) {
+      alert("Error al obtener la lista de empleados. Por favor, intente nuevamente.");
       return;
     }
-
-    // Busca un cliente con el nombre de usuario y contraseña proporcionados
-    const clienteEncontrado = clientes.find(
-      (cliente) =>
-        (cliente.Nombre === username || cliente.nombre === username) &&
-        (cliente.Contrasena === password || cliente.contrasena === password)
+  
+    const empleadoEncontrado = empleados.find(
+      (empleado) =>
+        (empleado.Nombre === username || empleado.nombre === username) &&
+        (empleado.Contrasena === password || empleado.contrasena === password)
     );
-
-    // Si el cliente fue encontrado, redirige a la página de cliente
-    if (clienteEncontrado) {
-      window.location.href = "cliente.html";
+  
+    if (empleadoEncontrado) {
+      window.localStorage.setItem("isEmpleado", "true");
+      window.location.href = "empleado.html";
     } else {
       alert("Usuario o contraseña incorrectos.");
     }
@@ -38,4 +35,5 @@ document.querySelector("form").addEventListener("submit", async (event) => {
     console.error("Error al intentar iniciar sesión:", error);
     alert("Hubo un problema con el inicio de sesión. Intente nuevamente.");
   }
+  
 });

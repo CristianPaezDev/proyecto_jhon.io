@@ -12,7 +12,7 @@
     --color-letra: #000;
     --color-hover: #184962;
     --color-añadir: #19b2ff;
-    --color-cancelar: #eb1919;
+    --color-cancelar: #fa4545;
     --color-blanco: #ffffff;
     --color-error: #ff0000;
     --color-bien:#b2fab6;
@@ -92,3 +92,15 @@
   background-color: var(--color-cancelar);
   color: var(--color-blanco);
 }
+
+ .button {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-letra);
+  border-radius: 5px;
+}
+

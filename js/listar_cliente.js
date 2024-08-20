@@ -11,7 +11,7 @@ const normalizeClientData = (client) => {
         last_name: client.Apellido || client.apellido || "",
         phone: client.Telefono || client.telefono || "",
         address: client.Direccion || client.direccion || "",
-        type_id: client.Contrasena || client.contrasena || ""
+        // type_id: client.Contrasena || client.contrasena || ""  
     };
 };
 
@@ -19,7 +19,7 @@ const listar = async () => {
     try {
         const data = await solicitud('cliente');
         
-        // console.log('Datos recibidos:', data);  // Descomentar para ver los datos en consola
+        // console.log('Datos recibidos:', data);  
 
         if (data.error) {
             throw new Error(data.error);
@@ -34,12 +34,12 @@ const listar = async () => {
         clients.forEach((element) => {
             const clone = document.importNode($template, true);
             clone.querySelector("tr").id = `user_${element.id}`;
-            clone.querySelector(".id").textContent = element.id; // Añadido para mostrar el ID
+            clone.querySelector(".id").textContent = element.id; 
             clone.querySelector(".first_name").textContent = element.first_name;
             clone.querySelector(".last_name").textContent = element.last_name;
             clone.querySelector(".phone").textContent = element.phone;
             clone.querySelector(".address").textContent = element.address;
-            clone.querySelector(".type_id").textContent = element.type_id;
+            // clone.querySelector(".type_id").textContent = element.type_id;  
 
             clone.querySelector(".edit").setAttribute("data-id", element.id);
             clone.querySelector(".delete").setAttribute("data-id", element.id);
@@ -56,3 +56,18 @@ const listar = async () => {
 document.addEventListener("DOMContentLoaded", () => {
     listar();
 });
+
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('edit')) {
+        const row = event.target.closest('tr');
+        const id = row.querySelector('.id').textContent.trim();
+
+        // Guardar el ID en el localStorage
+        localStorage.setItem('editClientId', id);
+
+        // Redirigir a la página de edición
+        window.location.href = 'editarCliente.html';
+    }
+});
+

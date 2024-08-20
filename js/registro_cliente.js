@@ -7,8 +7,8 @@ const nombre = document.querySelector("#nombre");
 const apellido = document.querySelector("#apellido");
 const telefono = document.querySelector("#telefono");
 const direccion = document.querySelector("#direccion");
-const contrasena = document.querySelector("#contrasena");
-const confirmaContrasena = document.querySelector("#confirmarcontrasena");
+// const contrasena = document.querySelector("#contrasena");
+// const confirmaContrasena = document.querySelector("#confirmarcontrasena");
 
 form.addEventListener('submit', (event) => {
     // Prevenir el envío del formulario si hay campos vacíos
@@ -24,12 +24,12 @@ form.addEventListener('submit', (event) => {
     });
 
     // Validar contraseñas
-    const contrasenaValue = contrasena.value.trim();
-    const confirmaContrasenaValue = confirmaContrasena.value.trim();
-    if (contrasenaValue !== confirmaContrasenaValue) {
-        alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-        isFormValid = false;
-    }
+    // const contrasenaValue = contrasena.value.trim();
+    // const confirmaContrasenaValue = confirmaContrasena.value.trim();
+    // if (contrasenaValue !== confirmaContrasenaValue) {
+    //     alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+    //     isFormValid = false;
+    // }
 
     if (emptyFields.length > 0) {
         // Mostrar alerta con los campos vacíos
@@ -48,8 +48,8 @@ form.addEventListener('submit', (event) => {
         apellido: apellido.value,
         telefono: telefono.value,
         direccion: direccion.value,
-        contrasena: contrasena.value,
-        confirmaContrasena: confirmaContrasena.value
+        // contrasena: contrasena.value,
+        // confirmaContrasena: confirmaContrasena.value
     };
 
     console.log(data);
@@ -68,8 +68,8 @@ form.addEventListener('submit', (event) => {
         apellido.value = "";
         telefono.value = "";
         direccion.value = "";
-        contrasena.value = "";
-        confirmaContrasena.value = "";
+        // contrasena.value = "";
+        // confirmaContrasena.value = "";
     })
     .catch(error => console.error('Error al enviar los datos:', error));
 });
@@ -91,13 +91,13 @@ telefono.addEventListener("blur", (event) => {
     is_empty(event, telefono);
 });
 
-contrasena.addEventListener("blur", (event) => {
-    is_empty(event, contrasena);
-});
+// contrasena.addEventListener("blur", (event) => {
+//     is_empty(event, contrasena);
+// });
 
-confirmaContrasena.addEventListener("blur", (event) => {
-    is_empty(event, confirmaContrasena);
-});
+// confirmaContrasena.addEventListener("blur", (event) => {
+//     is_empty(event, confirmaContrasena);
+// });
 
 // Validación en los eventos keypress
 nombre.addEventListener("keypress", (event) => {
@@ -109,5 +109,5 @@ apellido.addEventListener("keypress", (event) => {
 });
 
 telefono.addEventListener("keypress", numeros);
-contrasena.addEventListener("keypress", numeros);
-confirmaContrasena.addEventListener("keypress", numeros);
+// contrasena.addEventListener("keypress", numeros);
+// confirmaContrasena.addEventListener("keypress", numeros);

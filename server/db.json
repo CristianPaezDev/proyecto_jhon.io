@@ -5,72 +5,56 @@
       "nombre": "Cristian",
       "apellido": "paez",
       "telefono": "3128258894",
-      "direccion": "calle 32 35 c 52",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
+      "direccion": "calle 32 35 c 52"
     },
     {
       "id": "371c",
       "nombre": "edgar",
       "apellido": "castro",
       "telefono": "3203367365",
-      "direccion": "calle 32 35 c 52",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
+      "direccion": "calle 32 35 c 52"
     },
     {
       "id": "0c27",
       "nombre": "Lilia",
       "apellido": "ariza",
       "telefono": "3128258894",
-      "direccion": "call 25 68",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
+      "direccion": "call 25 68"
     },
     {
       "id": "b05f",
       "nombre": "andres ",
       "apellido": "lazaro",
       "telefono": "3164654654",
-      "direccion": "ciudadela confenalco",
-      "contrasena": "123",
-      "confirmaContrasena": "122"
+      "direccion": "ciudadela confenalco"
     },
     {
       "id": "6bcc",
       "nombre": "andres ",
       "apellido": "lazaro",
       "telefono": "2132123132",
-      "direccion": "call 25 68",
-      "contrasena": "123",
-      "confirmaContrasena": "321"
+      "direccion": "call 25 68"
     },
     {
       "id": "11ca",
       "nombre": "andres ",
       "apellido": "paez",
       "telefono": "3132153415",
-      "direccion": "cla 45",
-      "contrasena": "321",
-      "confirmaContrasena": "123"
+      "direccion": "cla 45"
     },
     {
       "id": "ba1c",
       "nombre": "andres ",
       "apellido": "lazaro",
       "telefono": "3213165161",
-      "direccion": "45 56 CR",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
+      "direccion": "45 56 CR"
     },
     {
       "id": "366c",
       "nombre": "edgar",
       "apellido": "lazaro",
       "telefono": "3254464654",
-      "direccion": "34",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
+      "direccion": "34"
     },
     {
       "id": "b392",
@@ -89,15 +73,6 @@
       "apellido": "lazaro",
       "telefono": "1321113321",
       "direccion": "call 25 68",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
-    },
-    {
-      "id": "bd57",
-      "nombre": "andres ",
-      "apellido": "lazaro",
-      "telefono": "2312321321",
-      "direccion": "sadf",
       "contrasena": "123",
       "confirmaContrasena": "123"
     },
