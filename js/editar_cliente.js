@@ -1,29 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
+import solicitud, { enviar } from "./ajax.js";
+
+document.addEventListener('DOMContentLoaded', async () => {
     // Obtener el ID del cliente a editar
     const clientId = localStorage.getItem('editClientId');
+    console.log('ID del cliente:', clientId);
 
     if (clientId) {
-        // Aquí podrías hacer una solicitud a tu backend para obtener los datos del cliente
-        // pero por ahora lo haremos estático simulando una base de datos
+        try {
+            // Obtener los datos del cliente desde el servidor
+            const cliente = await solicitud(`cliente/${clientId}`);
 
-        const clientes = JSON.parse(localStorage.getItem('clientes')) || [];
-
-        // Buscar el cliente por ID
-        const cliente = clientes.find(cliente => cliente.id === clientId);
-
-        if (cliente) {
-            // Llenar los campos del formulario con los datos del cliente
-            document.getElementById('nombre').value = cliente.nombre;
-            document.getElementById('apellido').value = cliente.apellido;
-            document.getElementById('telefono').value = cliente.telefono;
-            document.getElementById('direccion').value = cliente.direccion;
-            document.getElementById('user_id').value = cliente.id;
+            if (cliente) {
+                // Llenar los campos del formulario con los datos del cliente
+                document.getElementById('nombre').value = cliente.nombre || cliente.Nombre;
+                document.getElementById('apellido').value = cliente.apellido || cliente.Apellido;
+                document.getElementById('telefono').value = cliente.telefono || cliente.Telefono;
+                document.getElementById('direccion').value = cliente.direccion || cliente.Direccion;
+                document.getElementById('user_id').value = cliente.id;
+            }
+        } catch (error) {
+            console.error('Error al obtener los datos del cliente:', error);
         }
     }
 });
 
 // Manejar la edición del cliente
-document.getElementById('form-validation').addEventListener('submit', (event) => {
+document.getElementById('form-validation').addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const clienteActualizado = {
@@ -34,14 +36,19 @@ document.getElementById('form-validation').addEventListener('submit', (event) =>
         direccion: document.getElementById('direccion').value
     };
 
-    // Simular actualización en el localStorage (en una aplicación real, harías una solicitud PUT o PATCH al servidor)
-    let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
-    const clienteIndex = clientes.findIndex(cliente => cliente.id === clienteActualizado.id);
-    if (clienteIndex !== -1) {
-        clientes[clienteIndex] = clienteActualizado;
-        localStorage.setItem('clientes', JSON.stringify(clientes));
-    }
+    try {
+        // Enviar la solicitud de actualización usando la función `enviar`
+        await enviar(`cliente/${clienteActualizado.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(clienteActualizado)
+        });
 
-    // Redirigir de nuevo a la lista de clientes
-    window.location.href = 'cliente.html';
+        // Redirigir de nuevo a la lista de clientes
+        window.location.href = 'cliente.html';
+    } catch (error) {
+        console.error('Error al editar el cliente:', error);
+    }
 });

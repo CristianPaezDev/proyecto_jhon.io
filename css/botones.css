@@ -82,6 +82,7 @@
   border-radius: 10px;
   border: none;
   background-color: var(--color-editar);
+  color: var(--color-letra);
   margin: 10px;
 }
 
@@ -100,7 +101,7 @@
   font-size: 14px;
   text-align: center;
   text-decoration: none;
-  color: var(--color-letra);
+  /* color: var(--color-letra); */
   border-radius: 5px;
 }
 
