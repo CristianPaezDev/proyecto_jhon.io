@@ -24,7 +24,7 @@ const tipos = () => {
         .then((data) => {
             data.forEach(element => {
                 let option = document.createElement("option");
-                option.value = element.id;
+                option.value = element.nombre;
                 option.textContent = element.nombre;
                 fragmento.appendChild(option);
             });
@@ -68,7 +68,7 @@ form.addEventListener('submit', (event) => {
     });
 
     if (emptyFields.length > 0) {
-        alert(`Por favor, complete los siguientes campos:\n{emptyFields.join(', ')}`);
+        alert(`Por favor, complete los siguientes campos:\n${emptyFields.join(', ')}`);
         isFormValid = false;
     }
 

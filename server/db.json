@@ -2,14 +2,14 @@
   "cliente": [
     {
       "id": "371c",
-      "nombre": "Lilia",
+      "nombre": "Marina",
       "apellido": "ariza",
       "telefono": "3128258894",
       "direccion": "call 25 68"
     },
     {
       "id": "b05f",
-      "nombre": "andres ",
+      "nombre": "Juan",
       "apellido": "lazaro",
       "telefono": "3164654654",
       "direccion": "ciudadela confenalco"
@@ -55,12 +55,11 @@
   "empleado": [
     {
       "id": "9fc8",
-      "nombre": "andres ",
+      "nombre": "andres",
       "apellido": "lazaro",
       "telefono": "1321113321",
       "direccion": "call 25 68",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
+      "contrasena": "123"
     },
     {
       "id": "0ad3",
@@ -74,35 +73,13 @@
   ],
   "producto": [
     {
-      "id": "b8ea",
-      "nombre": "chocolatina",
-      "tipo": "chocolate",
-      "cantidad": "30",
+      "id": "817f",
+      "nombre": "gelatina",
+      "tipo": "helado",
+      "cantidad": "20",
       "marca": "jett",
-      "precio": "3000",
-      "fech_venc": "2024-09-26T16:11",
-      "proveedor": "Candy ladys",
-      "descripcion": "Cajas de chocolatina X 30 und"
-    },
-    {
-      "id": "3fd3",
-      "nombre": "andres ",
-      "tipo": "893e",
-      "cantidad": "30",
-      "marca": "jett",
-      "precio": "3000",
-      "fech_venc": "2024-08-28T10:29",
-      "proveedor": "b01d",
-      "descripcion": "Cajas de chocolatina X 30 und"
-    },
-    {
-      "id": "76fe",
-      "nombre": "samir",
-      "tipo": "50bc",
-      "cantidad": "30",
-      "marca": "jett",
-      "precio": "3000",
-      "fech_venc": "2024-08-27T10:34",
+      "precio": "5000",
+      "fech_venc": "2024-08-21T15:37",
       "proveedor": "b01d",
       "descripcion": "Cajas de chocolatina X 30 und"
     }
@@ -110,12 +87,10 @@
   "proveedor": [
     {
       "id": "b01d",
-      "nombre": "andres ",
-      "apellido": "lazaro",
+      "nombre": "Juan",
+      "apellido": "barrera",
       "telefono": "3128258894",
-      "direccion": "call 25 68",
-      "contrasena": "123",
-      "confirmaContrasena": "123"
+      "direccion": "call 25 68"
     },
     {
       "id": "7644",
@@ -143,6 +118,10 @@
     {
       "id": "37d6",
       "nombre": "galleta"
+    },
+    {
+      "id": "5e74",
+      "nombre": "gelatina"
     }
   ]
 }

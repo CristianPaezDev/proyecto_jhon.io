@@ -73,3 +73,13 @@ const listar = async () => {
 document.addEventListener("DOMContentLoaded", () => {
     listar();
 });
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('edit')) {
+        const row = event.target.closest('tr');
+        const id = row.querySelector('.id').textContent.trim();
+
+        localStorage.setItem('editProductoId', id);
+        window.location.href = 'editarProducto.html'; 
+    }
+});

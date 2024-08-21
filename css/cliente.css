@@ -34,3 +34,9 @@
   color: #fff;
   transition: 500ms;
 }
+
+.proveedor:hover{
+  background-color: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}

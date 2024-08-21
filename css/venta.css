@@ -92,4 +92,35 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
+.venta {
+    background-color: var(--color-secundario);
+}
+  
+.proveedor:hover{
+  background-color: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+.cliente:hover{
+    background: var(--color-hover);
+    color: #fff;
+    transition: 500ms;
+}
+   
+.producto:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+.empleado:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+  
+.venta:hover{
+  background: var(--color-hover);
+  color: #fff;
+  transition: 500ms;
+}
+  

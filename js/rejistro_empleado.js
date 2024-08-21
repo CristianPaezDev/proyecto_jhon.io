@@ -28,7 +28,7 @@ form.addEventListener("submit", (event) => {
   // Validar contraseñas
   const contrasenaValue = contrasena.value.trim();
   const confirmaContrasenaValue = confirmaContrasena.value.trim();
-  if (contrasenaValue !== confirmaContrasenaValue) {
+  if (contrasenaValue !== confirmaContrasenaValue) {  
     alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
     isFormValid = false;
   }

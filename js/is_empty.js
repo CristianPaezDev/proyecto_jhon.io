@@ -1,4 +1,4 @@
-const is_empty = (element) => {
+const is_empty = (event, element) => {
   if (element.value === "") {
       element.classList.remove("bien");
       element.classList.add("error");

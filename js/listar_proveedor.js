@@ -11,15 +11,12 @@ const normalizeProviderData = (provider) => {
         last_name: provider.Apellido || provider.apellido || "",
         phone: provider.Telefono || provider.telefono || "",
         address: provider.Direccion || provider.direccion || "",
-        // type_id: provider.Contrasena || provider.contrasena || ""  
     };
 };
 
 const listar = async () => {
     try {
         const data = await solicitud('proveedor');
-        
-        // console.log('Datos recibidos:', data);  // Descomentar para ver los datos en consola
 
         if (data.error) {
             throw new Error(data.error);
@@ -56,3 +53,13 @@ const listar = async () => {
 document.addEventListener("DOMContentLoaded", () => {
     listar();
 });
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('edit')){
+        const row = event.target.closest('tr');
+        const id = row.querySelector('.id').textContent.trim();
+
+        localStorage.setItem('editProveedorId', id);
+        window.location.href = 'editarProveedor.html';
+    }
+})

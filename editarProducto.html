@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/registro.css">
+    <title>Registro Producto</title>
+</head>
+<body>
+    <section class="registro">
+        <article class="container">
+            <h1 class="container__title">Editar Producto</h1>
+            <form action="producto.html" id="form-validation" novalidate>
+                <div class="form-group">
+                    <span>Nombre</span>
+                    <input type="text" id="nombre" placeholder="Ingresa el nombre del producto" required>
+                    <small>Por favor ingresa el nombre del producto</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Tipo</span>
+                    <select id="tipo" required>
+                        
+                    </select>
+                    <small>Por favor selecciona el tipo de producto</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Cantidad</span>
+                    <input type="text" id="cantidad" placeholder="Ingresa la cantidad" required>
+                    <small>Por favor ingresa la cantidad</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Marca</span>
+                    <input type="text" id="marca" placeholder="Ingresa la marca" required>
+                    <small>Por favor ingresa la marca</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Precio</span>
+                    <input type="text" id="precio" placeholder="Ingresa el precio" required>
+                    <small>Por favor ingresa el precio</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Fecha de vencimiento</span>
+                    <input type="datetime-local" id="fech_venc" required>
+                    <small>Por favor ingresa la fecha de vencimiento</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Descripción</span>
+                    <input type="text" id="descripcion" placeholder="Ingresa una descripción" required>
+                    <small>Por favor ingresa una descripción</small>
+                </div>
+
+                <div class="form-group">
+                    <span>Proveedor</span>
+                    <select id="proveedor" required>
+                        
+                    </select>
+                    <small>Por favor selecciona el proveedor</small>
+                </div>
+
+                <div class="button">
+                    <input type="hidden" id="user_id">
+                    <input type="submit" value="Editar">
+                </div>
+            </form>
+        </article>
+    </section>
+    <script src="/js/editar_producto.js" type="module"></script>
+</body>
+</html>
