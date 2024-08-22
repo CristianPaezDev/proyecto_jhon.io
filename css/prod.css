@@ -20,13 +20,6 @@ small{
     display: none;
 }
 
-body{
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
 
 .registro{
     max-width: 700px;
@@ -61,17 +54,6 @@ form span{
 }
 
 .form-group input{
-    width: 100%;
-    height: 40px;
-    border-color: var(--color_bordes);
-    outline: none;
-    background: var(--color_input);
-    padding-left: 15px;
-    border-radius: 40px;
-    transition: all 0.3s ease; 
-}
-
-.form-group select{
     width: 100%;
     height: 40px;
     border-color: var(--color_bordes);
@@ -122,48 +104,6 @@ form span{
     display: block;
     color: var(--color-error);
 }
-
-/* Estilos para los checkboxes */
-.marcas-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.marcas-item input[type="checkbox"] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-boton);
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-    margin-right: 10px;
-    position: relative;
-}
-
-.marcas-item input[type="checkbox"]:checked {
-    background-color: var(--color-boton);
-}
-
-.marcas-item input[type="checkbox"]:checked::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 5px;
-    width: 6px;
-    height: 10px;
-    border: solid var(--color-secundario);
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-.marcas-item label {
-    font-weight: 500;
-    cursor: pointer;
-}
-
-
 
 
 @media (max-width: 700px) {

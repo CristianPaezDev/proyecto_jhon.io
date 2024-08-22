@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/prod.css"/>
+    <title>Registro de tipo</title>
+</head>
+<body>
+    <section class="registro">
+        <article class="container">
+            <h1 class="container__title">Registro de Marca</h1>
+            <form action="proveedor.html" id="form-validation" novalidate>
+                <div class="form-group">
+                    <span>Nombre</span>
+                    <input type="text" id="nombre" placeholder="Ingresa el nombre " required />
+                    <small>Por favor ingresa tu nombre</small>
+                </div>
+
+                <div class="button">
+                    <input type="hidden" id="user_id"/>
+                    <input type="submit" value="Registrate"/>
+                </div>
+
+            </form>
+        </article>
+    </section>
+    <script type="module" src="/js/marca_prod.js"></script>
+</body>
+</html>

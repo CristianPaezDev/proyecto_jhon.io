@@ -27,7 +27,7 @@ document.querySelector("form").addEventListener("submit", async (event) => {
   
     if (empleadoEncontrado) {
       window.localStorage.setItem("isEmpleado", "true");
-      window.location.href = "empleado.html";
+      window.location.href = "venta.html";
     } else {
       alert("Usuario o contraseña incorrectos.");
     }

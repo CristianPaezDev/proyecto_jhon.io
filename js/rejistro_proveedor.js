@@ -1,61 +1,79 @@
 import is_letters from "./letras.js";
 import is_empty from "./is_empty.js";
 import numeros from "./numeros.js";
+import solicitud from "./ajax.js"; // Para realizar la solicitud de marcas
 
 const form = document.querySelector("#form-validation");
 const nombre = document.querySelector("#nombre");
 const apellido = document.querySelector("#apellido");
 const telefono = document.querySelector("#telefono");
 const direccion = document.querySelector("#direccion");
-// const contrasena = document.querySelector("#contrasena");
-// const confirmaContrasena = document.querySelector("#confirmarcontrasena");
+const marcasContainer = document.getElementById('marcas-container');
 
+// Cargar las marcas al cargar la página
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const marcas = await solicitud('marca'); // Ajusta la URL según sea necesario
+
+    if (marcas && Array.isArray(marcas)) {
+      marcas.forEach(marca => {
+        const div = document.createElement('div');
+        div.className = 'marcas-item';
+      
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `marca-${marca.nombre}`;
+        checkbox.value = marca.id;
+        checkbox.name = 'marcas';
+      
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.textContent = marca.nombre;
+      
+        div.appendChild(checkbox);
+        div.appendChild(label);
+        marcasContainer.appendChild(div);      
+      });      
+    }
+  } catch (error) {
+    console.error('Error al obtener las marcas:', error);
+  }
+});
+
+// Validación y envío del formulario
 form.addEventListener("submit", (event) => {
-  // Prevenir el envío del formulario si hay campos vacíos
   const requiredFields = form.querySelectorAll("[required]");
   const emptyFields = [];
   let isFormValid = true;
 
   requiredFields.forEach((field) => {
     if (!field.value.trim()) {
-      emptyFields.push(
-        field.name || field.id || field.placeholder || "Campo sin nombre"
-      );
+      emptyFields.push(field.name || field.id || field.placeholder || "Campo sin nombre");
       isFormValid = false;
     }
   });
 
-  // Validar contraseñas (Comentado)
-/*
-  const contrasenaValue = contrasena.value.trim();
-  const confirmaContrasenaValue = confirmaContrasena.value.trim();
-  if (contrasenaValue !== confirmaContrasenaValue) {
-    alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
-    isFormValid = false;
-  }
-*/
-
   if (emptyFields.length > 0) {
-    // Mostrar alerta con los campos vacíos
-    alert(
-      `Por favor, complete los siguientes campos:\n${emptyFields.join(", ")}`
-    );
+    alert(`Por favor, complete los siguientes campos:\n${emptyFields.join(", ")}`);
     isFormValid = false;
   }
 
   if (!isFormValid) {
     event.preventDefault();
-    return; // Detener el envío del formulario si no es válido
+    return;
   }
 
-  // Si todos los campos están llenos y las contraseñas coinciden, proceder con el envío
+  // Obtener las marcas seleccionadas
+  const marcasSeleccionadas = Array.from(document.querySelectorAll('input[name="marcas"]:checked'))
+    .map(checkbox => checkbox.value);
+
+  // Construir el objeto de datos a enviar
   const data = {
     nombre: nombre.value,
     apellido: apellido.value,
     telefono: telefono.value,
     direccion: direccion.value,
-    // contrasena: contrasena.value,
-    // confirmaContrasena: confirmaContrasena.value,
+    marcas: marcasSeleccionadas
   };
 
   console.log(data);
@@ -74,8 +92,10 @@ form.addEventListener("submit", (event) => {
       apellido.value = "";
       telefono.value = "";
       direccion.value = "";
-      // contrasena.value = "";
-      // confirmaContrasena.value = "";
+      // Limpiar los checkboxes de marcas
+      document.querySelectorAll('input[name="marcas"]:checked').forEach(checkbox => {
+        checkbox.checked = false;
+      });
     })
     .catch((error) => console.error("Error al enviar los datos:", error));
 });
@@ -97,14 +117,6 @@ telefono.addEventListener("blur", (event) => {
   is_empty(event, telefono);
 });
 
-// contrasena.addEventListener("blur", (event) => {
-//   is_empty(event, contrasena);
-// });
-
-// confirmaContrasena.addEventListener("blur", (event) => {
-//   is_empty(event, confirmaContrasena);
-// });
-
 // Validación en los eventos keypress
 nombre.addEventListener("keypress", (event) => {
   is_letters(event, nombre);
@@ -115,5 +127,3 @@ apellido.addEventListener("keypress", (event) => {
 });
 
 telefono.addEventListener("keypress", numeros);
-// contrasena.addEventListener("keypress", numeros);
-// confirmaContrasena.addEventListener("keypress", numeros);
