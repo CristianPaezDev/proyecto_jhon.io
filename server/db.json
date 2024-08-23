@@ -73,26 +73,15 @@
   ],
   "producto": [
     {
-      "id": "817f",
-      "nombre": "gelatina",
-      "tipo": "dulce duro",
-      "cantidad": "20",
-      "marca": "aac7",
-      "precio": "5000",
-      "fech_venc": "2024-08-21T15:37",
-      "descripcion": "Cajas de gelatina X 30 und",
-      "proveedor": "b131"
-    },
-    {
-      "id": "822d",
-      "nombre": "chocoramo",
-      "tipo": "dulce duro",
+      "id": "40a0",
+      "nombre": "ponque",
+      "tipo": "pan",
       "cantidad": "30",
-      "marca": "92a5",
+      "marca": "Ramo",
       "precio": "3000",
-      "fech_venc": "2024-08-30T23:51",
-      "proveedor": "b131",
-      "descripcion": "Cajas de chocoramo X 30 UNI"
+      "fech_venc": "2024-08-29",
+      "descripcion": "Cajas de chocolatina X 30 und",
+      "proveedor": "61fc"
     }
   ],
   "proveedor": [
@@ -115,7 +104,8 @@
       "direccion": "call 25 68",
       "marcas": [
         "aac7",
-        "92a5"
+        "92a5",
+        "238f"
       ]
     },
     {
@@ -161,6 +151,10 @@
     {
       "id": "5e74",
       "nombre": "gelatina"
+    },
+    {
+      "id": "ce7b",
+      "nombre": "pan"
     }
   ],
   "marca": [
@@ -183,6 +177,10 @@
     {
       "id": "123b",
       "nombre": "cocacola"
+    },
+    {
+      "id": "238f",
+      "nombre": "Ramo"
     }
   ]
 }
