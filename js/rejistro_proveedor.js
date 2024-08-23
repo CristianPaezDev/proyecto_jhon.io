@@ -63,9 +63,19 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
+});
+
+document.getElementById('form-validation').addEventListener('submit', async (event) => {
+  event.preventDefault();
+
   // Obtener las marcas seleccionadas
   const marcasSeleccionadas = Array.from(document.querySelectorAll('input[name="marcas"]:checked'))
     .map(checkbox => checkbox.value);
+
+  if(marcasSeleccionadas.length === 0){
+    alert("Debes seleccionar al menos una marca para enviar el formulario")
+    return
+  }
 
   // Construir el objeto de datos a enviar
   const data = {
@@ -98,7 +108,10 @@ form.addEventListener("submit", (event) => {
       });
     })
     .catch((error) => console.error("Error al enviar los datos:", error));
-});
+
+    window.location.href = 'proveedor.html'; 
+
+})
 
 // Validación en los eventos blur
 nombre.addEventListener("blur", (event) => {

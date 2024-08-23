@@ -43,7 +43,7 @@ const listar = async () => {
 
         // Mapear ID de marcas a sus nombres
         const marcaMap = marcas.reduce((map, marca) => {
-            map[marca.id] = marca.nombre;
+            map[marca.id] = marca.nombre    ;
             return map;
         }, {});
 

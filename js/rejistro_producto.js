@@ -51,7 +51,7 @@ const proveedores = () => {
         });
 }
 
-// Nueva función para cargar las marcas según el proveedor seleccionado
+// Función para cargar las marcas según el proveedor seleccionado
 const cargarMarcas = async (proveedorId) => {
     if (!proveedorId) return;
 

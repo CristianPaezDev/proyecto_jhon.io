@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const tipo = document.querySelector("#tipo");
             const proveedor = document.querySelector("#proveedor");
-            const marca = document.querySelector("#marca");
+            // const marca = document.querySelector("#marca");
             
             // Obtener los tipos, proveedores y marcas del servidor
             const tiposData = await solicitud("tipo");
