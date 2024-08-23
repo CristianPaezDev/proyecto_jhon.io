@@ -1,61 +1,97 @@
 import solicitud, { enviar } from "./ajax.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Obtener el ID del cliente a editar
+    // Obtener el ID del producto a editar
     const productoId = localStorage.getItem('editProductoId');
-    console.log('ID del cliente:', productoId);
+    console.log('ID del producto:', productoId);
 
     if (productoId) {
         try {
             const tipo = document.querySelector("#tipo");
             const proveedor = document.querySelector("#proveedor");
-            const fragmento = document.createDocumentFragment();
-            // Obtener los datos del cliente desde el servidor
-            solicitud("tipo")
-            .then((data) => {
-                data.forEach(element => {
-                    let option = document.createElement("option");
-                    option.value = element.nombre;
-                    option.textContent = element.nombre;
-                    fragmento.appendChild(option);
-                });
-                tipo.appendChild(fragmento);
+            const marca = document.querySelector("#marca");
+            
+            // Obtener los tipos, proveedores y marcas del servidor
+            const tiposData = await solicitud("tipo");
+            const proveedoresData = await solicitud("proveedor");
+            const marcasData = await solicitud("marca");
+            
+            // Llenar los campos tipo
+            tipo.innerHTML = '<option value="">Seleccione...</option>';
+            tiposData.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.nombre;
+                option.textContent = element.nombre;
+                tipo.appendChild(option);
             });
 
-            solicitud("proveedor")
-            .then((data) => {
-                data.forEach(element => {
-                    let option = document.createElement("option");
-                    option.value = element.id;
-                    option.textContent = element.nombre;
-                    fragmento.appendChild(option);
-                });
-                proveedor.appendChild(fragmento);
+            // Llenar los campos proveedor
+            proveedor.innerHTML = '<option value="">Seleccione...</option>';
+            proveedoresData.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.id;
+                option.textContent = element.nombre;
+                proveedor.appendChild(option);
             });
 
-            const cliente = await solicitud(`producto/${productoId}`);
+            // Obtener los datos del producto desde el servidor
+            const producto = await solicitud(`producto/${productoId}`);
 
-            if (cliente) {
-                console.log(cliente.tipo)
-                console.log(cliente.proveedor)
-                // Llenar los campos del formulario con los datos del cliente
-                document.getElementById('nombre').value = cliente.nombre || cliente.Nombre;
-                document.getElementById('tipo').value = cliente.tipo || cliente.Tipo;
-                document.getElementById('cantidad').value = cliente.cantidad || cliente.Cantidad;
-                document.getElementById('marca').value = cliente.marca || cliente.Marca;
-                document.getElementById('precio').value = cliente.precio || cliente.Precio;
-                document.getElementById('fech_venc').value = cliente.fech_venc || cliente.Fech_venc;
-                document.getElementById('descripcion').value = cliente.descripcion || cliente.Descripcion;
-                document.getElementById('proveedor').value = cliente.proveedor || cliente.Proveedor;
-                document.getElementById('user_id').value = cliente.id;
+            if (producto) {
+                // Llenar los campos del formulario con los datos del producto
+                document.getElementById('nombre').value = producto.nombre || '';
+                document.getElementById('tipo').value = producto.tipo || '';
+                document.getElementById('cantidad').value = producto.cantidad || '';
+                document.getElementById('marca').value = producto.marca || '';
+                document.getElementById('precio').value = producto.precio || '';
+                document.getElementById('fech_venc').value = producto.fech_venc || '';
+                document.getElementById('descripcion').value = producto.descripcion || '';
+                document.getElementById('proveedor').value = producto.proveedor || '';
+                document.getElementById('user_id').value = producto.id || '';
+
+                // Cargar marcas asociadas al proveedor seleccionado
+                await cargarMarcasPorProveedor(producto.proveedor);
             }
+
+            // Manejar el cambio de proveedor para actualizar las marcas
+            proveedor.addEventListener('change', async () => {
+                const proveedorId = proveedor.value;
+                await cargarMarcasPorProveedor(proveedorId);
+            });
+
         } catch (error) {
-            console.error('Error al obtener los datos del cliente:', error);
+            console.error('Error al obtener los datos del producto:', error);
         }
     }
 });
 
-// Manejar la edición del cliente
+// Función para cargar las marcas asociadas a un proveedor
+const cargarMarcasPorProveedor = async (proveedorId) => {
+    try {
+        // Obtener los datos del proveedor para encontrar las marcas asociadas
+        const proveedor = await solicitud(`proveedor/${proveedorId}`);
+        const marcasData = await solicitud("marca");
+
+        // Limpiar el select de marcas
+        const marcaSelect = document.getElementById('marca');
+        marcaSelect.innerHTML = '<option value="">Seleccione...</option>';
+
+        // Llenar el select de marcas con las marcas asociadas al proveedor
+        proveedor.marcas.forEach(marcaId => {
+            const marca = marcasData.find(m => m.id === marcaId);
+            if (marca) {
+                let option = document.createElement("option");
+                option.value = marca.id;
+                option.textContent = marca.nombre;
+                marcaSelect.appendChild(option);
+            }
+        });
+    } catch (error) {
+        console.error('Error al cargar las marcas por proveedor:', error);
+    }
+};
+
+// Manejar la edición del producto
 document.getElementById('form-validation').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -81,9 +117,9 @@ document.getElementById('form-validation').addEventListener('submit', async (eve
             body: JSON.stringify(productoActualizado)
         });
 
-        // Redirigir de nuevo a la lista de clientes
-            window.location.href = 'producto.html';
+        // Redirigir de nuevo a la lista de productos
+        window.location.href = 'producto.html';
     } catch (error) {
-        console.error('Error al editar el cliente:', error);
+        console.error('Error al editar el producto:', error);
     }
 });

@@ -75,13 +75,24 @@
     {
       "id": "817f",
       "nombre": "gelatina",
-      "tipo": "helado",
+      "tipo": "dulce duro",
       "cantidad": "20",
-      "marca": "jett",
+      "marca": "aac7",
       "precio": "5000",
       "fech_venc": "2024-08-21T15:37",
-      "proveedor": "b01d",
-      "descripcion": "Cajas de chocolatina X 30 und"
+      "descripcion": "Cajas de chocolatina X 30 und",
+      "proveedor": "b131"
+    },
+    {
+      "id": "822d",
+      "nombre": "chocoramo",
+      "tipo": "dulce duro",
+      "cantidad": "30",
+      "marca": "92a5",
+      "precio": "3000",
+      "fech_venc": "2024-08-30T23:51",
+      "proveedor": "b131",
+      "descripcion": "Cajas de chocoramo X 30 UNI"
     }
   ],
   "proveedor": [
@@ -92,7 +103,8 @@
       "telefono": "3203367365",
       "direccion": "sadf",
       "marcas": [
-        "92a5"
+        "aac7",
+        "5eb4"
       ]
     },
     {

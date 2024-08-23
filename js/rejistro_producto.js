@@ -1,7 +1,7 @@
 import is_letters from "./letras.js";
 import is_empty from "./is_empty.js";
 import numeros from "./numeros.js";
-import solicitud, { enviar } from  "./ajax.js";
+import solicitud, { enviar } from "./ajax.js";
 
 const form = document.querySelector("#form-validation");
 const nombre = document.querySelector("#nombre");
@@ -51,7 +51,43 @@ const proveedores = () => {
         });
 }
 
+// Nueva función para cargar las marcas según el proveedor seleccionado
+const cargarMarcas = async (proveedorId) => {
+    if (!proveedorId) return;
 
+    try {
+        // Obtener el proveedor con el ID seleccionado
+        const proveedorData = await solicitud(`proveedor/${proveedorId}`);
+        
+        // Verifica si el proveedor tiene marcas
+        if (proveedorData && proveedorData.marcas) {
+            // Obtén las marcas de todos los proveedores
+            const todasLasMarcas = await solicitud('marca');
+            
+            // Filtra las marcas correspondientes al proveedor
+            const marcasFiltradas = todasLasMarcas.filter(marca => proveedorData.marcas.includes(marca.id));
+            
+            marca.innerHTML = '<option value="">Seleccione una marca</option>'; // Limpiar opciones anteriores
+            
+            marcasFiltradas.forEach(element => {
+                let option = document.createElement("option");
+                option.value = element.id;
+                option.textContent = element.nombre;
+                marca.appendChild(option);
+            });
+        }
+    } catch (error) {
+        console.error('Error al cargar las marcas:', error);
+    }
+};
+
+
+proveedor.addEventListener("change", (event) => {
+    const proveedorId = event.target.value;
+    cargarMarcas(proveedorId);
+});
+
+// Ejecutar las funciones de carga inicial
 tipos();
 proveedores();
 
@@ -136,7 +172,6 @@ fech_venc.addEventListener("blur", (event) => {
     is_empty(event, fech_venc);
 });
 
-
 descripcion.addEventListener("blur", (event) => {
     is_empty(event, descripcion);
 });
@@ -149,10 +184,6 @@ nombre.addEventListener("keypress", (event) => {
 tipo.addEventListener("keypress", (event) => {
     is_letters(event, tipo);
 });
-
-// proveedor.addEventListener("keypress", (event) => {
-//     is_letters(event, proveedor);
-// });
 
 cantidad.addEventListener("keypress", numeros);
 

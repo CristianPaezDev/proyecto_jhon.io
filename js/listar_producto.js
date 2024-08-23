@@ -20,23 +20,30 @@ const normalizeProductData = (product) => {
 
 const listar = async () => {
     try {
-        // Obtener datos de productos y proveedores
-        const [data, proveedores] = await Promise.all([
+        // Obtener datos de productos, proveedores y marcas
+        const [data, proveedores, marcas] = await Promise.all([
             solicitud('producto'),
-            solicitud('proveedor')
+            solicitud('proveedor'),
+            solicitud('marca')
         ]);
 
-        if (data.error || proveedores.error) {
-            throw new Error(data.error || proveedores.error);
+        if (data.error || proveedores.error || marcas.error) {
+            throw new Error(data.error || proveedores.error || marcas.error);
         }
 
-        if (!Array.isArray(data) || !Array.isArray(proveedores)) {
+        if (!Array.isArray(data) || !Array.isArray(proveedores) || !Array.isArray(marcas)) {
             throw new Error('Formato de datos inesperado');
         }
 
         // Mapear ID de proveedores a sus nombres
         const proveedorMap = proveedores.reduce((map, proveedor) => {
             map[proveedor.id] = proveedor.nombre;
+            return map;
+        }, {});
+
+        // Mapear ID de marcas a sus nombres
+        const marcaMap = marcas.reduce((map, marca) => {
+            map[marca.id] = marca.nombre;
             return map;
         }, {});
 
@@ -50,7 +57,7 @@ const listar = async () => {
             clone.querySelector(".nombre").textContent = element.name;
             clone.querySelector(".tipo").textContent = element.type;
             clone.querySelector(".cantidad").textContent = element.quantity;
-            clone.querySelector(".marca").textContent = element.brand;
+            clone.querySelector(".marca").textContent = marcaMap[element.brand] || "Desconocido";
             clone.querySelector(".precio").textContent = element.price;
             clone.querySelector(".fech_venc").textContent = element.expiration_date;
             clone.querySelector(".descripcion").textContent = element.description;

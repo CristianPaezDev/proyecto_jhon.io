@@ -9,7 +9,7 @@
 <body>
     <section class="registro">
         <article class="container">
-            <h1 class="container__title">Editar Producto</h1>
+            <h1 class="container__title">Registro Producto</h1>
             <form action="producto.html" id="form-validation" novalidate>
                 <div class="form-group">
                     <span>Nombre</span>
@@ -32,11 +32,13 @@
                 </div>
 
                 <div class="form-group">
-                    <span>Marca</span>
-                    <input type="text" id="marca" placeholder="Ingresa la marca" required>
-                    <small>Por favor ingresa la marca</small>
+                    <span>Proveedor</span>
+                    <select id="proveedor" required>
+                        
+                    </select>
+                    <small>Por favor selecciona el proveedor</small>
                 </div>
-
+        
                 <div class="form-group">
                     <span>Precio</span>
                     <input type="text" id="precio" placeholder="Ingresa el precio" required>
@@ -56,16 +58,17 @@
                 </div>
 
                 <div class="form-group">
-                    <span>Proveedor</span>
-                    <select id="proveedor" required>
-                        
+                    <span>Marca</span>
+                    <select id="marca" required>
+                        <option value="">Seleccione una marca</option>
                     </select>
-                    <small>Por favor selecciona el proveedor</small>
+                    <small>Por favor selecciona una marca</small>
                 </div>
+                
 
                 <div class="button">
                     <input type="hidden" id="user_id">
-                    <input type="submit" value="Editar">
+                    <input type="submit" value="Registrar">
                 </div>
             </form>
         </article>

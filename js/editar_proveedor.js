@@ -21,10 +21,30 @@ document.addEventListener('DOMContentLoaded', async () => {
                 // Obtener las marcas disponibles
                 const marcas = await solicitud('marca');
 
-                // Marcar las marcas seleccionadas
+                // Crear los checkboxes para las marcas
+                const marcasContainer = document.getElementById('marcas-container');
+                marcasContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar los checkboxes
+
                 if (marcas && Array.isArray(marcas)) {
                     marcas.forEach(marca => {
-                        const checkbox = document.getElementById(`marca-${marca.id}`);
+                        const div = document.createElement('div');
+                        div.className = 'marcas-item';
+
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.id = `marca-${marca.id}`;
+                        checkbox.value = marca.id;
+                        checkbox.name = 'marcas';
+
+                        const label = document.createElement('label');
+                        label.htmlFor = checkbox.id;
+                        label.textContent = marca.nombre;
+
+                        div.appendChild(checkbox);
+                        div.appendChild(label);
+                        marcasContainer.appendChild(div);
+
+                        // Marcar las marcas seleccionadas
                         if (proveedor.marcas && proveedor.marcas.includes(marca.id)) {
                             checkbox.checked = true;
                         }
@@ -44,6 +64,12 @@ document.getElementById('form-validation').addEventListener('submit', async (eve
     // Obtener las marcas seleccionadas
     const marcasSeleccionadas = Array.from(document.querySelectorAll('input[name="marcas"]:checked'))
         .map(checkbox => checkbox.value);
+
+    // Verificar si al menos una marca ha sido seleccionada
+    if (marcasSeleccionadas.length === 0) {
+        alert("Debes seleccionar al menos una marca antes de guardar los cambios.");
+        return; // Detener el envío del formulario
+    }
 
     const proveedorActualizado = {
         id: document.getElementById('user_id').value,
