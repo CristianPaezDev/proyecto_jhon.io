@@ -93,6 +93,17 @@
       "fech_venc": "2024-08-30T23:51",
       "proveedor": "b131",
       "descripcion": "Cajas de chocoramo X 30 UNI"
+    },
+    {
+      "id": "e807",
+      "nombre": "andres aa",
+      "tipo": "helado",
+      "cantidad": "20",
+      "marca": "92a5",
+      "precio": "3000",
+      "fech_venc": "2024-08-16T13:56",
+      "proveedor": "39dd",
+      "descripcion": "Cajas de chocolatina X 30 und"
     }
   ],
   "proveedor": [
