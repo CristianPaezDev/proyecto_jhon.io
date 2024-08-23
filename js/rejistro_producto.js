@@ -82,6 +82,7 @@ const cargarMarcas = async (proveedorId) => {
 };
 
 
+
 proveedor.addEventListener("change", (event) => {
     const proveedorId = event.target.value;
     cargarMarcas(proveedorId);
@@ -91,10 +92,22 @@ proveedor.addEventListener("change", (event) => {
 tipos();
 proveedores();
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    let isFormValid = true; 
+
+    //toISOString() convierte un objeto Date a una cadena, La t separa la fecha de la hora en un array 
+    const fet = new Date(fech_venc.value).toISOString().split('T')[0];
+    const act = new Date().toISOString().split('T')[0];
+
+    if (fet <= act) {
+        alert("No puedes ingresar una fecha menor o igual a la de hoy");
+        isFormValid = false;
+    }
+
     const requiredFields = form.querySelectorAll("[required]");
     const emptyFields = [];
-    let isFormValid = true;
 
     requiredFields.forEach(field => {
         if (!field.value.trim()) {
@@ -109,8 +122,7 @@ form.addEventListener('submit', (event) => {
     }
 
     if (!isFormValid) {
-        event.preventDefault();
-        return;
+        return; // Si hay errores, no se envía el formulario
     }
 
     const data = {
@@ -123,8 +135,6 @@ form.addEventListener('submit', (event) => {
         proveedor: proveedor.value,
         descripcion: descripcion.value,
     };
-
-    console.log(data);
 
     fetch('http://localhost:3000/producto', {
         method: 'POST',
@@ -145,6 +155,8 @@ form.addEventListener('submit', (event) => {
         descripcion.value = "";
     })
     .catch(error => console.error('Error al enviar los datos:', error));
+
+    window.location.href = 'producto.html';
 });
 
 // Validación en los eventos blur

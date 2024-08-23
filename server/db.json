@@ -93,17 +93,6 @@
       "fech_venc": "2024-08-30T23:51",
       "proveedor": "b131",
       "descripcion": "Cajas de chocoramo X 30 UNI"
-    },
-    {
-      "id": "e807",
-      "nombre": "andres aa",
-      "tipo": "helado",
-      "cantidad": "20",
-      "marca": "92a5",
-      "precio": "3000",
-      "fech_venc": "2024-08-16T13:56",
-      "proveedor": "39dd",
-      "descripcion": "Cajas de chocolatina X 30 und"
     }
   ],
   "proveedor": [
@@ -149,68 +138,6 @@
       "marcas": [
         "92a5",
         "f219"
-      ]
-    },
-    {
-      "id": "0dec",
-      "nombre": "Juan",
-      "apellido": "ariza",
-      "telefono": "3164654654",
-      "direccion": "calle 32",
-      "marcas": [
-        "aac7",
-        "5eb4"
-      ]
-    },
-    {
-      "id": "00e4",
-      "nombre": "andres aa",
-      "apellido": "Paez",
-      "telefono": "1321113321",
-      "direccion": "calle 32",
-      "marcas": [
-        "f219"
-      ]
-    },
-    {
-      "id": "76e5",
-      "nombre": "julian",
-      "apellido": "lazaro",
-      "telefono": "3128258894",
-      "direccion": "calle 32",
-      "marcas": [
-        "f219"
-      ]
-    },
-    {
-      "id": "032d",
-      "nombre": "carlos",
-      "apellido": "garcia",
-      "telefono": "3458788757",
-      "direccion": "piedecuesta",
-      "marcas": [
-        "aac7",
-        "f219"
-      ]
-    },
-    {
-      "id": "b64e",
-      "nombre": "silva",
-      "apellido": "silva",
-      "telefono": "3365434354",
-      "direccion": "calle 32",
-      "marcas": [
-        "92a5"
-      ]
-    },
-    {
-      "id": "4fbf",
-      "nombre": "jhon ",
-      "apellido": "becerra",
-      "telefono": "3546545465",
-      "direccion": "km 7",
-      "marcas": [
-        "aac7"
       ]
     }
   ],
