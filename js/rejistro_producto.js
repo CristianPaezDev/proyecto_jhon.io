@@ -71,7 +71,7 @@ const cargarMarcas = async (proveedorId) => {
             
             marcasFiltradas.forEach(element => {
                 let option = document.createElement("option");
-                option.value = element.id;
+                option.value = element.nombre;
                 option.textContent = element.nombre;
                 marca.appendChild(option);
             });
@@ -94,7 +94,6 @@ proveedores();
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-
     let isFormValid = true; 
 
     //toISOString() convierte un objeto Date a una cadena, La t separa la fecha de la hora en un array 

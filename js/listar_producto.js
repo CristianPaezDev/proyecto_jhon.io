@@ -57,7 +57,8 @@ const listar = async () => {
             clone.querySelector(".nombre").textContent = element.name;
             clone.querySelector(".tipo").textContent = element.type;
             clone.querySelector(".cantidad").textContent = element.quantity;
-            clone.querySelector(".marca").textContent = marcaMap[element.brand] || "Desconocido";
+            console.log(element.brand)
+            clone.querySelector(".marca").textContent = element.brand || "Desconocido";
             clone.querySelector(".precio").textContent = element.price;
             clone.querySelector(".fech_venc").textContent = element.expiration_date;
             clone.querySelector(".descripcion").textContent = element.description;

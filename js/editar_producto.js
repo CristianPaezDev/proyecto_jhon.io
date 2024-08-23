@@ -1,5 +1,33 @@
 import solicitud, { enviar } from "./ajax.js";
 
+// Función para cargar las marcas asociadas a un proveedor
+const cargarMarcasPorProveedor = async (proveedorId) => {
+    try {
+        // Obtener los datos del proveedor para encontrar las marcas asociadas
+        const proveedor = await solicitud(`proveedor/${proveedorId}`);
+        const marcasData = await solicitud(`marca`);
+
+        // Limpiar el select de marcas
+        const marcaSelect = document.getElementById('marca');
+        marcaSelect.innerHTML = '<option value="">Seleccione...</option>';
+
+
+        // Llenar el select de marcas con las marcas asociadas al proveedor
+        proveedor.marcas.forEach(marcaId => {
+            const marca = marcasData.find(m => m.id === marcaId);
+            if (marca) {
+                let option = document.createElement("option");
+                option.value = marca.nombre;
+                option.textContent = marca.nombre;
+                marcaSelect.appendChild(option);
+            }
+        });
+    } catch (error) {
+        console.error('Error al cargar las marcas por proveedor:', error);
+    }
+};
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     // Obtener el ID del producto a editar
     const productoId = localStorage.getItem('editProductoId');
@@ -9,12 +37,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const tipo = document.querySelector("#tipo");
             const proveedor = document.querySelector("#proveedor");
-            // const marca = document.querySelector("#marca");
+            const marca = document.querySelector("#marca");
             
             // Obtener los tipos, proveedores y marcas del servidor
             const tiposData = await solicitud("tipo");
             const proveedoresData = await solicitud("proveedor");
-            const marcasData = await solicitud("marca");
+            // const marcasData = await solicitud("marca");
             
             // Llenar los campos tipo
             tipo.innerHTML = '<option value="">Seleccione...</option>';
@@ -42,12 +70,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('nombre').value = producto.nombre || '';
                 document.getElementById('tipo').value = producto.tipo || '';
                 document.getElementById('cantidad').value = producto.cantidad || '';
-                document.getElementById('marca').value = producto.marca || '';
                 document.getElementById('precio').value = producto.precio || '';
                 document.getElementById('fech_venc').value = producto.fech_venc || '';
                 document.getElementById('descripcion').value = producto.descripcion || '';
                 document.getElementById('proveedor').value = producto.proveedor || '';
                 document.getElementById('user_id').value = producto.id || '';
+                setTimeout(() => {
+                    document.getElementById('marca').value = producto.marca || '';      
+                }, 100);
+                
 
                 // Cargar marcas asociadas al proveedor seleccionado
                 await cargarMarcasPorProveedor(producto.proveedor);
@@ -65,31 +96,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Función para cargar las marcas asociadas a un proveedor
-const cargarMarcasPorProveedor = async (proveedorId) => {
-    try {
-        // Obtener los datos del proveedor para encontrar las marcas asociadas
-        const proveedor = await solicitud(`proveedor/${proveedorId}`);
-        const marcasData = await solicitud("marca");
-
-        // Limpiar el select de marcas
-        const marcaSelect = document.getElementById('marca');
-        marcaSelect.innerHTML = '<option value="">Seleccione...</option>';
-
-        // Llenar el select de marcas con las marcas asociadas al proveedor
-        proveedor.marcas.forEach(marcaId => {
-            const marca = marcasData.find(m => m.id === marcaId);
-            if (marca) {
-                let option = document.createElement("option");
-                option.value = marca.id;
-                option.textContent = marca.nombre;
-                marcaSelect.appendChild(option);
-            }
-        });
-    } catch (error) {
-        console.error('Error al cargar las marcas por proveedor:', error);
-    }
-};
 
 // Manejar la edición del producto
 document.getElementById('form-validation').addEventListener('submit', async (event) => {
@@ -106,6 +112,16 @@ document.getElementById('form-validation').addEventListener('submit', async (eve
         descripcion: document.getElementById('descripcion').value,
         proveedor: document.getElementById('proveedor').value
     };
+
+    //toISOString() convierte un objeto Date a una cadena, La t separa la fecha de la hora en un array 
+    const fet = new Date(fech_venc.value).toISOString().split('T')[0];
+    const act = new Date().toISOString().split('T')[0];
+
+    if (fet <= act) {
+        alert("No puedes ingresar una fecha menor o igual a la de hoy");
+        isFormValid = false;
+    }
+
 
     try {
         // Enviar la solicitud de actualización usando la función `enviar`
